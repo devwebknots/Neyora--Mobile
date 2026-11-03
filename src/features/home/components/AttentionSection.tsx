@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
   },
   avatarText: {
     fontFamily: typography.fontFamily.body.bold,
-    fontSize: scaleFont(14),
+    fontSize: scaleFont(12),
     color: '#6366F1',
     fontWeight: typography.fontWeight.bold,
   },

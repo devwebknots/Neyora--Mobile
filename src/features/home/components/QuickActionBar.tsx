@@ -11,7 +11,7 @@ import {
   View,
 } from 'react-native';
 import { LinearGradient } from '@/components/LinearGradient';
-import { colors, gradients, typography } from '@/config/theme';
+import { colors, typographyPresets } from '@/config/theme';
 import { KeyIcon, PlusIcon, ShareIcon, UsersIcon } from '@/components/icons';
 import { moderateScale, scaleFont } from '@/utils/responsive';
 
@@ -32,32 +32,36 @@ export const QuickActionBar: React.FC<QuickActionBarProps> = ({
     {
       id: 'newEvent',
       title: 'New event',
-      icon: <PlusIcon size={moderateScale(18)} color={colors.white} />,
+      icon: <PlusIcon size={moderateScale(17)} color={colors.white} />,
+      boxBg: '#749AED80',
       onPress: onNewEventPress,
     },
     {
       id: 'schedule',
       title: 'Schedule',
-      icon: <UsersIcon size={moderateScale(18)} color={colors.white} />,
+      icon: <UsersIcon size={moderateScale(17)} color={colors.white} />,
+      boxBg: '#8A4BC280',
       onPress: onSchedulePress,
     },
     {
       id: 'availability',
       title: 'Avaliability',
-      icon: <KeyIcon size={moderateScale(18)} color={colors.white} />,
+      icon: <KeyIcon size={moderateScale(17)} color={colors.white} />,
+      boxBg: '#3B967780',
       onPress: onAvailabilityPress,
     },
     {
       id: 'shareLink',
       title: 'Share link',
-      icon: <ShareIcon size={moderateScale(18)} color={colors.white} />,
+      icon: <ShareIcon size={moderateScale(17)} color={colors.white} />,
+      boxBg: '#DA835580',
       onPress: onShareLinkPress,
     },
   ];
 
   return (
     <LinearGradient
-      colors={gradients.button}
+      colors={['#03264C', '#0659B2']}
       start={{ x: 0, y: 0.5 }}
       end={{ x: 1, y: 0.5 }}
       style={styles.container}
@@ -72,7 +76,9 @@ export const QuickActionBar: React.FC<QuickActionBarProps> = ({
             accessibilityRole="button"
             accessibilityLabel={action.title}
           >
-            <View style={styles.iconContainer}>{action.icon}</View>
+            <View style={[styles.iconContainer, { backgroundColor: action.boxBg }]}>
+              {action.icon}
+            </View>
             <Text style={styles.actionLabel}>{action.title}</Text>
           </TouchableOpacity>
         ))}
@@ -83,12 +89,16 @@ export const QuickActionBar: React.FC<QuickActionBarProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: moderateScale(18),
+    width: '100%',
+    maxWidth: 350,
+    alignSelf: 'center',
+    minHeight: 75,
     marginTop: moderateScale(16),
-    borderRadius: moderateScale(22),
-    paddingVertical: moderateScale(13),
-    paddingHorizontal: moderateScale(8),
-    shadowColor: '#032B57',
+    borderRadius: 20,
+    paddingHorizontal: 15,
+    paddingVertical: 12,
+    justifyContent: 'center',
+    shadowColor: '#03264C',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.25,
     shadowRadius: 8,
@@ -97,26 +107,23 @@ const styles = StyleSheet.create({
   actionsRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
   },
   actionItem: {
     alignItems: 'center',
-    flex: 1,
+    justifyContent: 'center',
   },
   iconContainer: {
-    width: moderateScale(38),
-    height: moderateScale(38),
-    borderRadius: moderateScale(11),
-    backgroundColor: 'rgba(255, 255, 255, 0.16)',
+    width: 34,
+    height: 34,
+    borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: moderateScale(6),
+    marginBottom: 5,
   },
   actionLabel: {
-    fontFamily: typography.fontFamily.body.medium,
-    fontSize: scaleFont(11.5),
-    color: colors.white,
-    fontWeight: typography.fontWeight.medium,
+    ...typographyPresets.quickActionLabel,
+    textAlign: 'center',
   },
 });
 

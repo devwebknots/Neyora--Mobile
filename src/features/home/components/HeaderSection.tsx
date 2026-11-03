@@ -157,10 +157,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   brandTitle: {
-    fontFamily: typography.fontFamily.body.bold,
-    fontSize: scaleFont(16),
+    fontFamily: typography.fontFamily.heading.regular,
+    fontSize: 16,
     color: colors.white,
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: typography.fontWeight.regular,
     letterSpacing: 0.5,
     marginRight: moderateScale(8),
   },
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
   brandSubtitle: {
     fontFamily: typography.fontFamily.body.regular,
     fontSize: scaleFont(11.5),
-    color: 'rgba(255, 255, 255, 0.78)',
+    color: '#C7D2FE',
     marginTop: moderateScale(1),
   },
   actionsRow: {
@@ -276,8 +276,8 @@ const styles = StyleSheet.create({
   },
   dateSubtitle: {
     fontFamily: typography.fontFamily.body.regular,
-    fontSize: scaleFont(13),
-    color: 'rgba(255, 255, 255, 0.82)',
+    fontSize: scaleFont(12),
+    color: '#C7D2FE',
     marginTop: moderateScale(8),
   },
   shieldButton: {

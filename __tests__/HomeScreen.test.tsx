@@ -31,8 +31,8 @@ describe('Home Screen Architecture & Specifications', () => {
       expect(gradients.header[1]).toBe('#518EF9');
     });
 
-    test('Button Linear Gradient is #032B57 -> #0659B2', () => {
-      expect(gradients.button[0]).toBe('#032B57');
+    test('Button Linear Gradient is #03264C -> #0659B2', () => {
+      expect(gradients.button[0]).toBe('#03264C');
       expect(gradients.button[1]).toBe('#0659B2');
     });
   });

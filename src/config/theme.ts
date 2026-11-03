@@ -96,10 +96,10 @@ export const colors = {
 export const gradients = {
   // Linear gradient: #032B57 → #518EF9
   header: ['#032B57', '#518EF9'],
-  // Linear gradient: #032B57 → #0659B2
-  button: ['#032B57', '#0659B2'],
+  // Linear gradient: #03264C → #0659B2
+  button: ['#03264C', '#0659B2'],
   // Quick action bar
-  quickActions: ['#032B57', '#0659B2'],
+  quickActions: ['#03264C', '#0659B2'],
   // Bottom property notification banner
   propertyBanner: ['#032B57', '#2563EB'],
   // Bottom image dark scrim overlay
@@ -242,9 +242,9 @@ export const typographyPresets: Record<string, TextStyle> = {
   },
   greetingSubtitle: {
     fontFamily: typography.fontFamily.body.regular,
-    fontSize: scaleFont(13),
+    fontSize: scaleFont(12),
     lineHeight: scaleFont(18),
-    color: colors.textInverseMuted,
+    color: '#C7D2FE',
   },
   sectionTitle: {
     fontFamily: typography.fontFamily.body.bold,
@@ -310,6 +310,14 @@ export const typographyPresets: Record<string, TextStyle> = {
     fontSize: scaleFont(14),
     lineHeight: scaleFont(18),
     fontWeight: typography.fontWeight.semibold,
+  },
+  quickActionLabel: {
+    fontFamily: typography.fontFamily.body.medium,
+    fontSize: 12,
+    lineHeight: 14,
+    color: colors.white,
+    fontWeight: typography.fontWeight.medium,
+    letterSpacing: 0,
   },
   tabLabel: {
     fontFamily: typography.fontFamily.body.bold,

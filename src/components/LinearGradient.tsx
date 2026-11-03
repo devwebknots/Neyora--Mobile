@@ -39,7 +39,7 @@ export const LinearGradient: React.FC<LinearGradientProps> = ({
     const c1 = String(colors[1]).toUpperCase();
 
     if (c0 === '#032B57' && c1 === '#518EF9') return GRADIENT_BASE64.header;
-    if (c0 === '#032B57' && c1 === '#0659B2') return GRADIENT_BASE64.button;
+    if ((c0 === '#032B57' || c0 === '#03264C') && c1 === '#0659B2') return GRADIENT_BASE64.button;
     if (c0 === '#032B57' && c1 === '#2563EB') return GRADIENT_BASE64.banner;
     if (c0.includes('TRANSPARENT') || c1.includes('0.8')) return GRADIENT_BASE64.scrim;
 
