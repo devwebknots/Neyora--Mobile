@@ -1,87 +1,224 @@
 /**
- * Global Theme Configuration
- * Design system tokens for colors, spacing, typography, and layout.
+ * Centralized Design System & Theme Configuration
+ * Contains all colors, typography, gradients, spacing, radii, shadows, and shared styles.
  */
 
+import { Platform, StyleSheet, TextStyle } from 'react-native';
+import { moderateScale, scaleFont } from '@/utils/responsive';
+
 export const colors = {
-  // Brand
+  // Brand & Palette (Strictly aligned with specification)
   primary: '#2563EB',
-  primaryDark: '#1D4ED8',
+  headerDarkBlue: '#0B1D3A',
+  headerGradientStart: '#032B57',
+  headerGradientEnd: '#518EF9',
+  buttonGradientStart: '#032B57',
+  buttonGradientEnd: '#0659B2',
+
+  // Secondary & Accents
   primaryLight: '#3B82F6',
+  primaryDark: '#1D4ED8',
   secondary: '#64748B',
   accent: '#F59E0B',
 
   // Status & Feedback
   success: '#10B981',
-  successLight: '#D1FAE5',
+  successLight: '#DCFCE7',
+  successDark: '#15803D',
   error: '#EF4444',
   errorLight: '#FEE2E2',
   warning: '#F59E0B',
   warningLight: '#FEF3C7',
+  warningDark: '#B45309',
   info: '#3B82F6',
   infoLight: '#DBEAFE',
 
-  // Neutrals
+  // Specific Functional Badges & Components
+  liveBadge: {
+    bg: 'rgba(16, 185, 129, 0.15)',
+    text: '#10B981',
+    dot: '#10B981',
+  },
+  occupiedBadge: {
+    bg: '#DCFCE7',
+    text: '#15803D',
+    dot: '#16A34A',
+  },
+  warningBanner: {
+    bg: '#FEFCE8',
+    border: '#FEF08A',
+    iconBg: '#FEF3C7',
+    icon: '#D97706',
+    pillBg: '#FEF3C7',
+    pillText: '#B45309',
+  },
+  awaitingBadge: {
+    bg: '#FEF3C7',
+    text: '#D97706',
+    dot: '#D97706',
+  },
+  avatarPurple: {
+    bg: '#EDE9FE',
+    text: '#6366F1',
+  },
+  scheduleItem1: {
+    bg: '#F0F4FA',
+    time: '#4F46E5',
+    tagBg: '#E0E7FF',
+    tagText: '#4F46E5',
+  },
+  scheduleItem2: {
+    bg: '#ECFDF5',
+    time: '#059669',
+    tagBg: '#D1FAE5',
+    tagText: '#059669',
+  },
+
+  // Base Neutrals
   white: '#FFFFFF',
   black: '#0F172A',
   background: '#F8FAFC',
   surface: '#FFFFFF',
   surfaceElevated: '#FFFFFF',
+  surfaceMuted: '#F1F5F9',
   border: '#E2E8F0',
   borderLight: '#F1F5F9',
 
-  // Typography
+  // Typography Colors
   textPrimary: '#0F172A',
   textSecondary: '#64748B',
   textMuted: '#94A3B8',
   textInverse: '#FFFFFF',
-
-  // Dark Theme Alternative Tokens
-  dark: {
-    background: '#0B0F19',
-    surface: '#151C2C',
-    surfaceElevated: '#1E293B',
-    border: '#2A364E',
-    textPrimary: '#F8FAFC',
-    textSecondary: '#94A3B8',
-  },
+  textInverseMuted: 'rgba(255, 255, 255, 0.75)',
+  textBlue: '#2563EB',
 } as const;
+
+export const gradients = {
+  // Linear gradient: #032B57 → #518EF9
+  header: ['#032B57', '#518EF9'],
+  // Linear gradient: #032B57 → #0659B2
+  button: ['#032B57', '#0659B2'],
+  // Quick action bar
+  quickActions: ['#032B57', '#0659B2'],
+  // Bottom property notification banner
+  propertyBanner: ['#032B57', '#2563EB'],
+  // Bottom image dark scrim overlay
+  imageDarkOverlay: ['transparent', 'rgba(0, 0, 0, 0.8)'],
+};
 
 export const spacing = {
   none: 0,
-  xxs: 2,
-  xs: 4,
-  sm: 8,
-  md: 16,
-  lg: 24,
-  xl: 32,
-  xxl: 48,
-  xxxl: 64,
+  xxs: moderateScale(2),
+  xs: moderateScale(4),
+  sm: moderateScale(8),
+  md: moderateScale(12),
+  lg: moderateScale(16),
+  xl: moderateScale(20),
+  xxl: moderateScale(24),
+  xxxl: moderateScale(32),
+  section: moderateScale(24),
 } as const;
+
+export const borderRadius = {
+  none: 0,
+  xs: 4,
+  sm: 6,
+  md: 8,
+  lg: 12,
+  xl: 16,
+  xxl: 20,
+  header: 28,
+  pill: 9999,
+  full: 9999,
+} as const;
+
+// Cross-platform font families
+const fontHeadingRegular = Platform.select({
+  ios: 'PlayfairDisplay-Regular',
+  android: 'PlayfairDisplay-Regular',
+  default: 'PlayfairDisplay-Regular',
+});
+
+const fontHeadingMedium = Platform.select({
+  ios: 'PlayfairDisplay-Medium',
+  android: 'PlayfairDisplay-Medium',
+  default: 'PlayfairDisplay-Medium',
+});
+
+const fontHeadingSemiBold = Platform.select({
+  ios: 'PlayfairDisplay-SemiBold',
+  android: 'PlayfairDisplay-SemiBold',
+  default: 'PlayfairDisplay-SemiBold',
+});
+
+const fontHeadingBold = Platform.select({
+  ios: 'PlayfairDisplay-Bold',
+  android: 'PlayfairDisplay-Bold',
+  default: 'PlayfairDisplay-Bold',
+});
+
+const fontBodyRegular = Platform.select({
+  ios: 'Inter-Regular',
+  android: 'Inter-Regular',
+  default: 'Inter-Regular',
+});
+
+const fontBodyMedium = Platform.select({
+  ios: 'Inter-Medium',
+  android: 'Inter-Medium',
+  default: 'Inter-Medium',
+});
+
+const fontBodySemiBold = Platform.select({
+  ios: 'Inter-SemiBold',
+  android: 'Inter-SemiBold',
+  default: 'Inter-SemiBold',
+});
+
+const fontBodyBold = Platform.select({
+  ios: 'Inter-Bold',
+  android: 'Inter-Bold',
+  default: 'Inter-Bold',
+});
 
 export const typography = {
   fontFamily: {
-    regular: 'System',
-    medium: 'System',
-    bold: 'System',
+    heading: {
+      regular: fontHeadingRegular,
+      medium: fontHeadingMedium,
+      semiBold: fontHeadingSemiBold,
+      bold: fontHeadingBold,
+    },
+    body: {
+      regular: fontBodyRegular,
+      medium: fontBodyMedium,
+      semiBold: fontBodySemiBold,
+      bold: fontBodyBold,
+    },
   },
   fontSize: {
-    xs: 12,
-    sm: 14,
-    base: 16,
-    lg: 18,
-    xl: 20,
-    xxl: 24,
-    xxxl: 32,
+    xxs: scaleFont(10),
+    xs: scaleFont(11),
+    sm: scaleFont(12),
+    base: scaleFont(14),
+    md: scaleFont(15),
+    lg: scaleFont(16),
+    xl: scaleFont(18),
+    xxl: scaleFont(20),
+    xxxl: scaleFont(28),
+    display: scaleFont(32),
   },
   lineHeight: {
-    xs: 16,
-    sm: 20,
-    base: 24,
-    lg: 28,
-    xl: 32,
-    xxl: 36,
-    xxxl: 44,
+    xxs: scaleFont(14),
+    xs: scaleFont(16),
+    sm: scaleFont(18),
+    base: scaleFont(20),
+    md: scaleFont(22),
+    lg: scaleFont(24),
+    xl: scaleFont(26),
+    xxl: scaleFont(28),
+    xxxl: scaleFont(34),
+    display: scaleFont(38),
   },
   fontWeight: {
     regular: '400' as const,
@@ -91,45 +228,169 @@ export const typography = {
   },
 } as const;
 
-export const borderRadius = {
-  none: 0,
-  sm: 4,
-  md: 8,
-  lg: 12,
-  xl: 16,
-  full: 9999,
-} as const;
+/**
+ * Predefined Typography Presets
+ * Reusable styles for Headings, Body, Labels, and Buttons
+ */
+export const typographyPresets: Record<string, TextStyle> = {
+  greetingTitle: {
+    fontFamily: typography.fontFamily.heading.bold,
+    fontSize: scaleFont(30),
+    lineHeight: scaleFont(36),
+    color: colors.white,
+    fontWeight: typography.fontWeight.bold,
+  },
+  greetingSubtitle: {
+    fontFamily: typography.fontFamily.body.regular,
+    fontSize: scaleFont(13),
+    lineHeight: scaleFont(18),
+    color: colors.textInverseMuted,
+  },
+  sectionTitle: {
+    fontFamily: typography.fontFamily.body.bold,
+    fontSize: scaleFont(19),
+    lineHeight: scaleFont(24),
+    color: colors.textPrimary,
+    fontWeight: typography.fontWeight.bold,
+  },
+  sectionLink: {
+    fontFamily: typography.fontFamily.body.semiBold,
+    fontSize: scaleFont(13),
+    color: colors.primary,
+    fontWeight: typography.fontWeight.semibold,
+  },
+  cardTitle: {
+    fontFamily: typography.fontFamily.body.bold,
+    fontSize: scaleFont(15),
+    lineHeight: scaleFont(20),
+    color: colors.textPrimary,
+    fontWeight: typography.fontWeight.bold,
+  },
+  cardSubtitle: {
+    fontFamily: typography.fontFamily.body.regular,
+    fontSize: scaleFont(12),
+    lineHeight: scaleFont(16),
+    color: colors.textSecondary,
+  },
+  body: {
+    fontFamily: typography.fontFamily.body.regular,
+    fontSize: scaleFont(14),
+    lineHeight: scaleFont(20),
+    color: colors.textPrimary,
+  },
+  bodyMedium: {
+    fontFamily: typography.fontFamily.body.medium,
+    fontSize: scaleFont(14),
+    lineHeight: scaleFont(20),
+    color: colors.textPrimary,
+    fontWeight: typography.fontWeight.medium,
+  },
+  bodyBold: {
+    fontFamily: typography.fontFamily.body.semiBold,
+    fontSize: scaleFont(14),
+    lineHeight: scaleFont(20),
+    color: colors.textPrimary,
+    fontWeight: typography.fontWeight.semibold,
+  },
+  label: {
+    fontFamily: typography.fontFamily.body.medium,
+    fontSize: scaleFont(11),
+    lineHeight: scaleFont(14),
+    color: colors.textSecondary,
+    fontWeight: typography.fontWeight.medium,
+  },
+  badge: {
+    fontFamily: typography.fontFamily.body.semiBold,
+    fontSize: scaleFont(11),
+    lineHeight: scaleFont(14),
+    fontWeight: typography.fontWeight.semibold,
+  },
+  button: {
+    fontFamily: typography.fontFamily.body.semiBold,
+    fontSize: scaleFont(14),
+    lineHeight: scaleFont(18),
+    fontWeight: typography.fontWeight.semibold,
+  },
+  tabLabel: {
+    fontFamily: typography.fontFamily.body.bold,
+    fontSize: scaleFont(10),
+    lineHeight: scaleFont(12),
+    fontWeight: typography.fontWeight.bold,
+    letterSpacing: 0.4,
+  },
+};
 
 export const shadows = {
+  none: {
+    shadowColor: 'transparent',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0,
+    shadowRadius: 0,
+    elevation: 0,
+  },
   sm: {
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 2,
+    shadowOpacity: 0.04,
+    shadowRadius: 3,
+    elevation: 1,
   },
   md: {
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 4,
+    shadowOpacity: 0.06,
+    shadowRadius: 6,
+    elevation: 3,
   },
   lg: {
-    shadowColor: '#000000',
+    shadowColor: '#0F172A',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 8,
-    elevation: 8,
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 5,
   },
 } as const;
 
+export const commonStyles = StyleSheet.create({
+  card: {
+    backgroundColor: colors.surface,
+    borderRadius: borderRadius.xl,
+    borderWidth: 1,
+    borderColor: colors.border,
+    padding: spacing.lg,
+    ...shadows.sm,
+  },
+  rowBetween: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  rowCenter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  center: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  pillBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: moderateScale(8),
+    paddingVertical: moderateScale(3),
+    borderRadius: borderRadius.pill,
+  },
+});
+
 export const theme = {
   colors,
+  gradients,
   spacing,
-  typography,
   borderRadius,
+  typography,
+  typographyPresets,
   shadows,
+  commonStyles,
 } as const;
 
 export type Theme = typeof theme;
