@@ -82,8 +82,8 @@ export const PropertyActivitySection: React.FC<PropertyActivitySectionProps> = (
         {/* Property Feature Image with Scrim and Overlays */}
         <View style={styles.imageContainer}>
           <Image
-            source={require('@/assets/images/mercer_townhouses.jpg')}
-            style={StyleSheet.absoluteFill}
+            source={require('@/assets/images/mercer_residence.png')}
+            style={styles.propertyImage}
             resizeMode="cover"
           />
 
@@ -232,13 +232,22 @@ const styles = StyleSheet.create({
     marginLeft: moderateScale(4),
   },
   imageContainer: {
-    height: moderateScale(146),
+    height: moderateScale(165),
     borderRadius: moderateScale(12),
     overflow: 'hidden',
     marginTop: moderateScale(12),
     backgroundColor: '#1E293B',
     justifyContent: 'space-between',
     position: 'relative',
+  },
+  propertyImage: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: '100%',
+    height: '100%',
   },
   availabilityBadge: {
     alignSelf: 'flex-end',
