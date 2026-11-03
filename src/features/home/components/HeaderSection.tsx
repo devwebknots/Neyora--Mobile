@@ -6,6 +6,7 @@
 
 import React from 'react';
 import {
+  Image,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -47,9 +48,11 @@ export const HeaderSection: React.FC<HeaderSectionProps> = ({
       <View style={styles.topBar}>
         {/* Brand Monogram & Live Status */}
         <View style={styles.brandRow}>
-          <View style={styles.logoBadge}>
-            <Text style={styles.logoText}>N</Text>
-          </View>
+          <Image
+            source={require('@/assets/images/neyora_logo.png')}
+            style={styles.logoImage}
+            resizeMode="contain"
+          />
           <View style={styles.brandTextColumn}>
             <View style={styles.brandTitleRow}>
               <Text style={styles.brandTitle}>NEYORA</Text>
@@ -129,25 +132,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  logoBadge: {
-    width: moderateScale(38),
-    height: moderateScale(38),
-    borderRadius: moderateScale(19),
-    backgroundColor: '#3B68FF',
-    alignItems: 'center',
-    justifyContent: 'center',
+  logoImage: {
+    width: moderateScale(40),
+    height: moderateScale(40),
     marginRight: moderateScale(10),
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.15,
-    shadowRadius: 3,
-    elevation: 3,
-  },
-  logoText: {
-    fontFamily: typography.fontFamily.body.bold,
-    fontSize: scaleFont(20),
-    color: colors.white,
-    fontWeight: typography.fontWeight.bold,
   },
   brandTextColumn: {
     justifyContent: 'center',
