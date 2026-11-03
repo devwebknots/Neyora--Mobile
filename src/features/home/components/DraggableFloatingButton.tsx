@@ -28,19 +28,29 @@ const BUTTON_SIZE = moderateScale(56);
 
 export const DraggableFloatingButton: React.FC<DraggableFloatingButtonProps> = ({
   onPress,
+  initialBottomOffset,
+  initialRightOffset,
 }) => {
   const insets = useSafeAreaInsets();
   const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
-  // Boundaries to keep the button within screen and above navigation bar
-  const minX = 12;
-  const maxX = screenWidth - BUTTON_SIZE - 12;
-  const minY = Math.max(insets.top, 24) + 10;
-  const maxY = screenHeight - Math.max(insets.bottom, 16) - 78;
+  // Approximate height of BottomNavBar including safe area padding
+  const navBarHeight = moderateScale(54) + Math.max(insets.bottom, moderateScale(10));
 
-  // Default initial position on right side near Schedule section (matching Figma)
-  const defaultX = screenWidth - BUTTON_SIZE - 20;
-  const defaultY = Math.min(screenHeight * 0.46, maxY);
+  // Boundaries to keep the button within screen and above navigation bar
+  const minX = moderateScale(12);
+  const maxX = screenWidth - BUTTON_SIZE - moderateScale(12);
+  const minY = Math.max(insets.top, 24) + moderateScale(10);
+  const maxY = screenHeight - navBarHeight - BUTTON_SIZE - moderateScale(4);
+
+  // Default initial position on right end directly above the MESSAGES tab icon
+  const defaultX = initialRightOffset != null
+    ? screenWidth - BUTTON_SIZE - initialRightOffset
+    : Math.min(maxX, Math.max(minX, (screenWidth * 0.875) - (BUTTON_SIZE / 2)));
+
+  const defaultY = initialBottomOffset != null
+    ? screenHeight - initialBottomOffset - BUTTON_SIZE
+    : screenHeight - navBarHeight - BUTTON_SIZE - moderateScale(10);
 
   const pan = useRef(new Animated.ValueXY({ x: defaultX, y: defaultY })).current;
   const scale = useRef(new Animated.Value(1)).current;
