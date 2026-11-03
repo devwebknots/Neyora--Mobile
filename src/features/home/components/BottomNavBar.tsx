@@ -51,10 +51,12 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
         accessibilityState={{ selected: activeTab === 'home' }}
         accessibilityLabel="Home Tab"
       >
-        <HomeIcon
-          size={moderateScale(22)}
-          color={activeTab === 'home' ? colors.primary : colors.textSecondary}
-        />
+        <View style={styles.iconContainer}>
+          <HomeIcon
+            size={moderateScale(22)}
+            color={activeTab === 'home' ? colors.primary : colors.textSecondary}
+          />
+        </View>
         <Text
           style={[
             styles.tabLabel,
@@ -74,19 +76,23 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
         accessibilityState={{ selected: activeTab === 'calendar' }}
         accessibilityLabel="Calendar Tab"
       >
-        <CalendarIcon
-          size={moderateScale(22)}
-          color={activeTab === 'calendar' ? colors.primary : colors.textSecondary}
-        />
-        <Text
-          style={[
-            styles.tabLabel,
-            activeTab === 'calendar' ? styles.tabLabelActive : styles.tabLabelInactive,
-          ]}
-        >
-          CALENDAR
-        </Text>
-        <View style={styles.calendarDot} />
+        <View style={styles.iconContainer}>
+          <CalendarIcon
+            size={moderateScale(22)}
+            color={activeTab === 'calendar' ? colors.primary : colors.textSecondary}
+          />
+        </View>
+        <View style={styles.labelWithDotWrapper}>
+          <Text
+            style={[
+              styles.tabLabel,
+              activeTab === 'calendar' ? styles.tabLabelActive : styles.tabLabelInactive,
+            ]}
+          >
+            CALENDAR
+          </Text>
+          <View style={styles.calendarDot} />
+        </View>
       </TouchableOpacity>
 
       {/* 3. BOOKINGS (with badge count 4) */}
@@ -98,7 +104,7 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
         accessibilityState={{ selected: activeTab === 'bookings' }}
         accessibilityLabel="Bookings Tab, 4 notifications"
       >
-        <View style={styles.iconWithBadgeWrapper}>
+        <View style={styles.iconContainer}>
           <BookmarkIcon
             size={moderateScale(22)}
             color={activeTab === 'bookings' ? colors.primary : colors.textSecondary}
@@ -126,7 +132,7 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
         accessibilityState={{ selected: activeTab === 'messages' }}
         accessibilityLabel="Messages Tab, 2 notifications"
       >
-        <View style={styles.iconWithBadgeWrapper}>
+        <View style={styles.iconContainer}>
           <ChatTabIcon
             size={moderateScale(22)}
             color={activeTab === 'messages' ? colors.primary : colors.textSecondary}
@@ -151,7 +157,7 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
 const styles = StyleSheet.create({
   navContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'space-around',
     backgroundColor: colors.white,
     borderTopWidth: 1,
@@ -165,8 +171,19 @@ const styles = StyleSheet.create({
   },
   tabItem: {
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     flex: 1,
+  },
+  iconContainer: {
+    height: moderateScale(24),
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
+  },
+  labelWithDotWrapper: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
   },
   tabLabel: {
     fontFamily: typography.fontFamily.body.bold,
@@ -174,6 +191,7 @@ const styles = StyleSheet.create({
     fontWeight: typography.fontWeight.bold,
     marginTop: moderateScale(4),
     letterSpacing: 0.4,
+    textAlign: 'center',
   },
   tabLabelActive: {
     color: colors.primary,
@@ -182,16 +200,12 @@ const styles = StyleSheet.create({
     color: '#64748B',
   },
   calendarDot: {
+    position: 'absolute',
+    bottom: -moderateScale(7),
     width: moderateScale(5),
     height: moderateScale(5),
     borderRadius: moderateScale(2.5),
     backgroundColor: '#F59E0B',
-    marginTop: moderateScale(3),
-  },
-  iconWithBadgeWrapper: {
-    position: 'relative',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   tabBadge: {
     position: 'absolute',
