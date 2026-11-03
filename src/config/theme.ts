@@ -234,11 +234,11 @@ export const typography = {
  */
 export const typographyPresets: Record<string, TextStyle> = {
   greetingTitle: {
-    fontFamily: typography.fontFamily.heading.bold,
-    fontSize: scaleFont(30),
-    lineHeight: scaleFont(36),
+    fontFamily: typography.fontFamily.heading.semiBold,
+    fontSize: 24,
+    lineHeight: 30,
     color: colors.white,
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: typography.fontWeight.semibold,
   },
   greetingSubtitle: {
     fontFamily: typography.fontFamily.body.regular,

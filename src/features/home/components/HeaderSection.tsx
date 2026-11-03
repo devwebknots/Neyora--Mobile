@@ -268,11 +268,11 @@ const styles = StyleSheet.create({
     paddingRight: moderateScale(12),
   },
   greetingHeading: {
-    fontFamily: typography.fontFamily.heading.bold,
-    fontSize: scaleFont(31),
-    lineHeight: scaleFont(38),
+    fontFamily: typography.fontFamily.heading.semiBold,
+    fontSize: 24,
+    lineHeight: 30,
     color: colors.white,
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: typography.fontWeight.semibold,
   },
   dateSubtitle: {
     fontFamily: typography.fontFamily.body.regular,
