@@ -14,7 +14,6 @@ import {
 import { colors, shadows, spacing, typography } from '@/config/theme';
 import {
   ChevronRightIcon,
-  MessageBubbleIcon,
   UserIcon,
   VideoCameraIcon,
 } from '@/components/icons';
@@ -119,18 +118,6 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
             </View>
           </TouchableOpacity>
         </ScrollView>
-
-        {/* Floating Messages Button */}
-        <TouchableOpacity
-          style={styles.fabButton}
-          onPress={onMessagesFabPress}
-          activeOpacity={0.9}
-          accessibilityRole="button"
-          accessibilityLabel="Open Messages"
-        >
-          <MessageBubbleIcon size={moderateScale(20)} color={colors.white} />
-          <Text style={styles.fabLabel}>Messages</Text>
-        </TouchableOpacity>
       </View>
     </View>
   );
@@ -248,31 +235,6 @@ const styles = StyleSheet.create({
     color: '#64748B',
     marginLeft: moderateScale(5),
     flex: 1,
-  },
-  fabButton: {
-    position: 'absolute',
-    right: spacing.screenHorizontal,
-    top: moderateScale(10),
-    width: moderateScale(54),
-    height: moderateScale(54),
-    borderRadius: moderateScale(27),
-    backgroundColor: '#0F2B48',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 2,
-    borderColor: '#FFFFFF',
-    ...shadows.lg,
-    shadowColor: '#032B57',
-    shadowOpacity: 0.35,
-    shadowRadius: 8,
-    elevation: 8,
-  },
-  fabLabel: {
-    fontFamily: typography.fontFamily.body.bold,
-    fontSize: scaleFont(8),
-    color: colors.white,
-    fontWeight: typography.fontWeight.bold,
-    marginTop: moderateScale(1),
   },
 });
 

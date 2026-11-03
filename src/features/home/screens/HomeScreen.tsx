@@ -20,6 +20,7 @@ import {
   AttentionSection,
   BottomNavBar,
   BottomNavTab,
+  DraggableFloatingButton,
   HeaderSection,
   PropertyActivitySection,
   QuickActionBar,
@@ -128,6 +129,11 @@ export const HomeScreen: React.FC = () => {
       <BottomNavBar
         activeTab={activeTab}
         onSelectTab={(tab) => setActiveTab(tab)}
+      />
+
+      {/* 8. Draggable Floating Messages Button */}
+      <DraggableFloatingButton
+        onPress={() => handleAction('Messages', 'Opening instant communication channel.')}
       />
     </View>
   );

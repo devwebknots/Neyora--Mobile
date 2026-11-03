@@ -80,6 +80,7 @@ export const colors = {
     availability: '#3B967780',
     shareLink: '#DA835580',
   },
+  floatingButton: '#16437E',
 
   // Base Neutrals
   white: '#FFFFFF',
@@ -189,6 +190,18 @@ const fontBodyBold = Platform.select({
   default: 'Inter-Bold',
 });
 
+const fontPoppinsRegular = Platform.select({
+  ios: 'Poppins-Regular',
+  android: 'Poppins-Regular',
+  default: 'Poppins-Regular',
+});
+
+const fontPoppinsMedium = Platform.select({
+  ios: 'Poppins-Medium',
+  android: 'Poppins-Medium',
+  default: 'Poppins-Medium',
+});
+
 export const typography = {
   fontFamily: {
     heading: {
@@ -202,6 +215,10 @@ export const typography = {
       medium: fontBodyMedium,
       semiBold: fontBodySemiBold,
       bold: fontBodyBold,
+    },
+    poppins: {
+      regular: fontPoppinsRegular,
+      medium: fontPoppinsMedium,
     },
   },
   fontSize: {
@@ -326,6 +343,15 @@ export const typographyPresets: Record<string, TextStyle> = {
     color: colors.white,
     fontWeight: typography.fontWeight.medium,
     letterSpacing: 0,
+  },
+  floatingButtonLabel: {
+    fontFamily: fontPoppinsMedium,
+    fontSize: 6,
+    lineHeight: 16.5,
+    fontWeight: typography.fontWeight.medium,
+    color: colors.white,
+    letterSpacing: 0,
+    textAlign: 'center',
   },
   tabLabel: {
     fontFamily: typography.fontFamily.body.bold,

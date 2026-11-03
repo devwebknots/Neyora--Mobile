@@ -5,3 +5,4 @@ export * from './AttentionSection';
 export * from './ScheduleSection';
 export * from './PropertyActivitySection';
 export * from './BottomNavBar';
+export * from './DraggableFloatingButton';
