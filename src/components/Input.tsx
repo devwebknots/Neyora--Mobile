@@ -22,7 +22,7 @@ export interface InputProps extends TextInputProps {
   readonly containerStyle?: StyleProp<ViewStyle>;
 }
 
-export const Input = forwardRef<TextInput, InputProps>(
+export const Input = forwardRef<React.ElementRef<typeof TextInput>, InputProps>(
   ({ label, error, helperText, containerStyle, style, ...textInputProps }, ref) => {
     const hasError = Boolean(error);
 

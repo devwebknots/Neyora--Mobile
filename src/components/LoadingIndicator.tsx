@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   fullScreen: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     backgroundColor: 'rgba(255, 255, 255, 0.85)',
     zIndex: 999,
   },

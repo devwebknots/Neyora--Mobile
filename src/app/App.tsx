@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { AppProviders } from './providers';
-import { RootNavigator } from '@/navigation';
+import { RootNavigator } from '../navigation';
 
 export const App: React.FC = () => {
   return (

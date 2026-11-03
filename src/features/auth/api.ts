@@ -4,8 +4,8 @@
  */
 
 import { AxiosResponse } from 'axios';
-import { apiClient } from '@/services/api/client';
-import { ENDPOINTS } from '@/services/api/endpoints';
+// import { apiClient } from '@/services/api/client';
+// import { ENDPOINTS } from '@/services/api/endpoints';
 import { AuthUser, LoginCredentials, LoginResponse } from './types';
 
 export const authApi = {
@@ -18,7 +18,7 @@ export const authApi = {
     // return apiClient.post<LoginResponse>(ENDPOINTS.AUTH.LOGIN, credentials);
 
     // Mock API simulation:
-    await new Promise((resolve) => setTimeout(resolve, 800));
+    await new Promise<void>((resolve) => setTimeout(() => resolve(), 800));
 
     if (credentials.password === 'error123') {
       throw new Error('Invalid email or password combination');
@@ -56,7 +56,7 @@ export const authApi = {
     // In live backend integration:
     // return apiClient.post(ENDPOINTS.AUTH.LOGOUT);
 
-    await new Promise((resolve) => setTimeout(resolve, 400));
+    await new Promise<void>((resolve) => setTimeout(() => resolve(), 400));
     return {
       data: { success: true },
       status: 200,
@@ -73,7 +73,7 @@ export const authApi = {
     // In live backend integration:
     // return apiClient.get<AuthUser>(ENDPOINTS.AUTH.ME);
 
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await new Promise<void>((resolve) => setTimeout(() => resolve(), 500));
     return {
       data: {
         id: 'usr_mock_001',

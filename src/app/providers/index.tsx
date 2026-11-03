@@ -21,8 +21,6 @@ export const AppProviders: React.FC<AppProvidersProps> = ({ children }) => {
       <SafeAreaProvider>
         <StatusBar
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-          backgroundColor="transparent"
-          translucent
         />
         {children}
       </SafeAreaProvider>
