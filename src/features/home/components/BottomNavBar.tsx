@@ -34,6 +34,7 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
   onSelectTab,
 }) => {
   const insets = useSafeAreaInsets();
+  const inactiveColor = colors.textMuted; // #94A3B8 - softer visual weight
 
   return (
     <View
@@ -54,7 +55,7 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
         <View style={styles.iconContainer}>
           <HomeIcon
             size={moderateScale(22)}
-            color={activeTab === 'home' ? colors.primary : colors.textSecondary}
+            color={activeTab === 'home' ? colors.primary : inactiveColor}
           />
         </View>
         <Text
@@ -79,7 +80,7 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
         <View style={styles.iconContainer}>
           <CalendarIcon
             size={moderateScale(22)}
-            color={activeTab === 'calendar' ? colors.primary : colors.textSecondary}
+            color={activeTab === 'calendar' ? colors.primary : inactiveColor}
           />
         </View>
         <View style={styles.labelWithDotWrapper}>
@@ -107,7 +108,7 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
         <View style={styles.iconContainer}>
           <BookmarkIcon
             size={moderateScale(22)}
-            color={activeTab === 'bookings' ? colors.primary : colors.textSecondary}
+            color={activeTab === 'bookings' ? colors.primary : inactiveColor}
           />
           <View style={styles.tabBadge}>
             <Text style={styles.tabBadgeText}>4</Text>
@@ -135,7 +136,7 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
         <View style={styles.iconContainer}>
           <ChatTabIcon
             size={moderateScale(22)}
-            color={activeTab === 'messages' ? colors.primary : colors.textSecondary}
+            color={activeTab === 'messages' ? colors.primary : inactiveColor}
           />
           <View style={styles.tabBadge}>
             <Text style={styles.tabBadgeText}>2</Text>
@@ -161,13 +162,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     backgroundColor: colors.white,
     borderTopWidth: 1,
-    borderTopColor: '#E2E8F0',
-    paddingTop: moderateScale(9),
+    borderTopColor: 'rgba(226, 232, 240, 0.7)',
+    paddingTop: moderateScale(8),
     shadowColor: '#000',
     shadowOffset: { width: 0, height: -2 },
-    shadowOpacity: 0.04,
+    shadowOpacity: 0.03,
     shadowRadius: 4,
-    elevation: 8,
+    elevation: 4,
   },
   tabItem: {
     alignItems: 'center',
@@ -186,25 +187,27 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   tabLabel: {
-    fontFamily: typography.fontFamily.body.bold,
-    fontSize: scaleFont(10),
-    fontWeight: typography.fontWeight.bold,
+    fontFamily: typography.fontFamily.body.medium,
+    fontSize: scaleFont(9.5),
+    fontWeight: typography.fontWeight.medium,
     marginTop: moderateScale(4),
-    letterSpacing: 0.4,
+    letterSpacing: 0.5,
     textAlign: 'center',
   },
   tabLabelActive: {
     color: colors.primary,
+    fontFamily: typography.fontFamily.body.semiBold,
+    fontWeight: typography.fontWeight.semibold,
   },
   tabLabelInactive: {
-    color: '#64748B',
+    color: '#94A3B8',
   },
   calendarDot: {
     position: 'absolute',
     bottom: -moderateScale(7),
-    width: moderateScale(5),
-    height: moderateScale(5),
-    borderRadius: moderateScale(2.5),
+    width: moderateScale(4.5),
+    height: moderateScale(4.5),
+    borderRadius: moderateScale(2.25),
     backgroundColor: '#F59E0B',
   },
   tabBadge: {
@@ -212,19 +215,19 @@ const styles = StyleSheet.create({
     top: -moderateScale(5),
     right: -moderateScale(8),
     backgroundColor: '#EF4444',
-    width: moderateScale(16),
-    height: moderateScale(16),
-    borderRadius: moderateScale(8),
+    width: moderateScale(15),
+    height: moderateScale(15),
+    borderRadius: moderateScale(7.5),
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1.5,
     borderColor: colors.white,
   },
   tabBadgeText: {
-    fontFamily: typography.fontFamily.body.bold,
-    fontSize: scaleFont(9),
+    fontFamily: typography.fontFamily.body.semiBold,
+    fontSize: scaleFont(8.5),
     color: colors.white,
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: typography.fontWeight.semibold,
   },
 });
 

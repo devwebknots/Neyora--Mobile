@@ -58,7 +58,7 @@ export const PropertyActivitySection: React.FC<PropertyActivitySectionProps> = (
           activeOpacity={0.7}
         >
           <Text style={styles.viewActivityLink}>View Activity</Text>
-          <ChevronRightIcon size={moderateScale(14)} color={colors.primary} />
+          <ChevronRightIcon size={moderateScale(13)} color={colors.primary} />
         </TouchableOpacity>
       </View>
 
@@ -120,7 +120,7 @@ export const PropertyActivitySection: React.FC<PropertyActivitySectionProps> = (
           activeOpacity={0.7}
         >
           <Text style={styles.seeMoreText}>See more</Text>
-          <ChevronDownIcon size={moderateScale(14)} color="#0F172A" strokeWidth={2.2} />
+          <ChevronDownIcon size={moderateScale(14)} color="#64748B" strokeWidth={1.8} />
         </TouchableOpacity>
 
         {/* Next Showing Strip */}
@@ -154,7 +154,7 @@ export const PropertyActivitySection: React.FC<PropertyActivitySectionProps> = (
 const styles = StyleSheet.create({
   sectionContainer: {
     marginHorizontal: spacing.screenHorizontal,
-    marginTop: moderateScale(22),
+    marginTop: moderateScale(24),
     marginBottom: moderateScale(24),
   },
   headerRow: {
@@ -166,9 +166,9 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontFamily: typography.fontFamily.heading.medium,
     fontSize: scaleFont(17),
-    lineHeight: scaleFont(25.5),
-    letterSpacing: -0.43,
-    color: '#0F172A',
+    lineHeight: scaleFont(24),
+    letterSpacing: -0.3,
+    color: '#1E293B',
     fontWeight: '500',
   },
   viewActivityRow: {
@@ -176,10 +176,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   viewActivityLink: {
-    fontFamily: typography.fontFamily.body.semiBold,
-    fontSize: scaleFont(13),
+    fontFamily: typography.fontFamily.body.medium,
+    fontSize: scaleFont(12.5),
     color: colors.primary,
-    fontWeight: typography.fontWeight.semibold,
+    fontWeight: typography.fontWeight.medium,
     marginRight: moderateScale(3),
   },
   card: {
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(16),
     borderWidth: 1,
     borderColor: '#E2E8F0',
-    padding: moderateScale(15),
+    padding: moderateScale(16),
     ...shadows.sm,
   },
   cardHeaderRow: {
@@ -196,41 +196,42 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   propertyName: {
-    fontFamily: typography.fontFamily.body.bold,
-    fontSize: scaleFont(16.5),
-    color: '#0F172A',
-    fontWeight: typography.fontWeight.bold,
+    fontFamily: typography.fontFamily.body.semiBold,
+    fontSize: scaleFont(15.5),
+    color: '#1E293B',
+    fontWeight: typography.fontWeight.semibold,
   },
   occupancyBadge: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#DCFCE7',
-    paddingHorizontal: moderateScale(8),
-    paddingVertical: moderateScale(3),
-    borderRadius: moderateScale(12),
+    paddingHorizontal: moderateScale(7.5),
+    paddingVertical: moderateScale(2.5),
+    borderRadius: moderateScale(10),
   },
   occupancyDot: {
-    width: moderateScale(6),
-    height: moderateScale(6),
-    borderRadius: moderateScale(3),
+    width: moderateScale(5.5),
+    height: moderateScale(5.5),
+    borderRadius: moderateScale(2.75),
     backgroundColor: '#16A34A',
     marginRight: moderateScale(5),
   },
   occupancyText: {
-    fontFamily: typography.fontFamily.body.semiBold,
-    fontSize: scaleFont(11.5),
+    fontFamily: typography.fontFamily.body.medium,
+    fontSize: scaleFont(11),
     color: '#15803D',
-    fontWeight: typography.fontWeight.semibold,
+    fontWeight: typography.fontWeight.medium,
   },
   locationRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: moderateScale(4),
+    marginTop: moderateScale(3),
   },
   locationText: {
     fontFamily: typography.fontFamily.body.regular,
-    fontSize: scaleFont(12),
+    fontSize: scaleFont(11.5),
     color: '#64748B',
+    opacity: 0.85,
     marginLeft: moderateScale(4),
   },
   imageContainer: {
@@ -254,21 +255,21 @@ const styles = StyleSheet.create({
   availabilityBadge: {
     alignSelf: 'flex-end',
     margin: moderateScale(10),
-    backgroundColor: colors.white,
-    paddingHorizontal: moderateScale(9),
-    paddingVertical: moderateScale(3.5),
-    borderRadius: moderateScale(12),
+    backgroundColor: 'rgba(255, 255, 255, 0.94)',
+    paddingHorizontal: moderateScale(8),
+    paddingVertical: moderateScale(3),
+    borderRadius: moderateScale(10),
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.15,
+    shadowOpacity: 0.1,
     shadowRadius: 2,
-    elevation: 2,
+    elevation: 1,
   },
   availabilityBadgeText: {
-    fontFamily: typography.fontFamily.body.semiBold,
-    fontSize: scaleFont(10.5),
-    color: '#0F172A',
-    fontWeight: typography.fontWeight.semibold,
+    fontFamily: typography.fontFamily.body.medium,
+    fontSize: scaleFont(10),
+    color: '#1E293B',
+    fontWeight: typography.fontWeight.medium,
   },
   imageScrim: {
     paddingHorizontal: moderateScale(12),
@@ -281,35 +282,35 @@ const styles = StyleSheet.create({
   },
   unitOverlayText: {
     fontFamily: typography.fontFamily.body.regular,
-    fontSize: scaleFont(11.5),
-    color: colors.white,
+    fontSize: scaleFont(11),
+    color: 'rgba(255, 255, 255, 0.85)',
   },
   priceOverlayText: {
-    fontFamily: typography.fontFamily.body.bold,
-    fontSize: scaleFont(15.5),
+    fontFamily: typography.fontFamily.body.semiBold,
+    fontSize: scaleFont(15),
     color: colors.white,
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: typography.fontWeight.semibold,
   },
   luxuryCategoryColumn: {
     alignItems: 'flex-end',
   },
   luxuryCategoryText: {
     fontFamily: typography.fontFamily.body.medium,
-    fontSize: scaleFont(11),
-    color: colors.white,
+    fontSize: scaleFont(10.5),
+    color: 'rgba(255, 255, 255, 0.85)',
     fontWeight: typography.fontWeight.medium,
   },
   seeMoreButton: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: moderateScale(10),
+    paddingVertical: moderateScale(11),
   },
   seeMoreText: {
-    fontFamily: typography.fontFamily.body.semiBold,
-    fontSize: scaleFont(12.5),
-    color: '#0F172A',
-    fontWeight: typography.fontWeight.semibold,
+    fontFamily: typography.fontFamily.body.medium,
+    fontSize: scaleFont(12),
+    color: '#64748B',
+    fontWeight: typography.fontWeight.medium,
     marginRight: moderateScale(5),
   },
   showingBanner: {
@@ -331,22 +332,22 @@ const styles = StyleSheet.create({
   showingText: {
     fontFamily: typography.fontFamily.body.medium,
     fontSize: scaleFont(11.5),
-    color: colors.white,
+    color: 'rgba(255, 255, 255, 0.92)',
     fontWeight: typography.fontWeight.medium,
     flex: 1,
     marginRight: moderateScale(8),
   },
   manageButton: {
     backgroundColor: colors.white,
-    paddingHorizontal: moderateScale(13),
-    paddingVertical: moderateScale(6.5),
-    borderRadius: moderateScale(8),
+    paddingHorizontal: moderateScale(12),
+    paddingVertical: moderateScale(6),
+    borderRadius: moderateScale(7),
   },
   manageButtonText: {
-    fontFamily: typography.fontFamily.body.bold,
-    fontSize: scaleFont(12),
+    fontFamily: typography.fontFamily.body.semiBold,
+    fontSize: scaleFont(11.5),
     color: '#0F172A',
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: typography.fontWeight.semibold,
   },
 });
 

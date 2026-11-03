@@ -60,7 +60,7 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
           activeOpacity={0.7}
         >
           <Text style={styles.viewCalendarLink}>View Calendar</Text>
-          <ChevronRightIcon size={moderateScale(14)} color={colors.primary} />
+          <ChevronRightIcon size={moderateScale(13)} color={colors.primary} />
         </TouchableOpacity>
       </View>
 
@@ -89,7 +89,7 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
             </Text>
 
             <View style={styles.metaRow}>
-              <VideoCameraIcon size={moderateScale(14)} color="#64748B" />
+              <VideoCameraIcon size={moderateScale(13)} color="#64748B" />
               <Text style={styles.metaText} numberOfLines={1}>
                 Virtual Meet • 8 participants
               </Text>
@@ -111,7 +111,7 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
             </Text>
 
             <View style={styles.metaRow}>
-              <UserIcon size={moderateScale(14)} color="#64748B" />
+              <UserIcon size={moderateScale(13)} color="#64748B" />
               <Text style={styles.metaText} numberOfLines={1}>
                 With Sarah Li • The Me...
               </Text>
@@ -125,7 +125,7 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    marginTop: moderateScale(22),
+    marginTop: moderateScale(24),
   },
   headerRow: {
     flexDirection: 'row',
@@ -141,26 +141,26 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontFamily: typography.fontFamily.heading.medium,
     fontSize: scaleFont(17),
-    lineHeight: scaleFont(25.5),
-    letterSpacing: -0.43,
-    color: '#0F172A',
+    lineHeight: scaleFont(24),
+    letterSpacing: -0.3,
+    color: '#1E293B',
     fontWeight: '500',
     marginRight: moderateScale(6),
   },
   eventCountText: {
     fontFamily: typography.fontFamily.body.regular,
-    fontSize: scaleFont(13),
-    color: '#64748B',
+    fontSize: scaleFont(12),
+    color: '#94A3B8',
   },
   viewCalendarRow: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   viewCalendarLink: {
-    fontFamily: typography.fontFamily.body.semiBold,
-    fontSize: scaleFont(13),
+    fontFamily: typography.fontFamily.body.medium,
+    fontSize: scaleFont(12.5),
     color: colors.primary,
-    fontWeight: typography.fontWeight.semibold,
+    fontWeight: typography.fontWeight.medium,
     marginRight: moderateScale(3),
   },
   carouselWrapper: {
@@ -173,9 +173,9 @@ const styles = StyleSheet.create({
   eventCard: {
     width: moderateScale(218),
     borderRadius: moderateScale(14),
-    padding: moderateScale(14),
+    padding: moderateScale(15),
     borderWidth: 1,
-    borderColor: 'rgba(0, 0, 0, 0.04)',
+    borderColor: 'rgba(0, 0, 0, 0.03)',
     ...shadows.sm,
   },
   eventCard1: {
@@ -190,50 +190,51 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   timeText: {
-    fontFamily: typography.fontFamily.body.bold,
-    fontSize: scaleFont(14),
-    fontWeight: typography.fontWeight.bold,
+    fontFamily: typography.fontFamily.body.semiBold,
+    fontSize: scaleFont(13.5),
+    fontWeight: typography.fontWeight.semibold,
   },
   timeText1: {
-    color: '#4F46E5',
+    color: '#4338CA',
   },
   timeText2: {
-    color: '#059669',
+    color: '#047857',
   },
   tagBadge: {
-    paddingHorizontal: moderateScale(7),
+    paddingHorizontal: moderateScale(6.5),
     paddingVertical: moderateScale(2),
-    borderRadius: moderateScale(6),
+    borderRadius: moderateScale(5),
   },
   tagBadge1: {
     backgroundColor: '#E0E7FF',
   },
   tagText: {
-    fontFamily: typography.fontFamily.body.semiBold,
-    fontSize: scaleFont(10.5),
-    fontWeight: typography.fontWeight.semibold,
+    fontFamily: typography.fontFamily.body.medium,
+    fontSize: scaleFont(10),
+    fontWeight: typography.fontWeight.medium,
   },
   tagText1: {
-    color: '#4F46E5',
+    color: '#4338CA',
   },
   eventTitle: {
-    fontFamily: typography.fontFamily.body.bold,
-    fontSize: scaleFont(13.5),
+    fontFamily: typography.fontFamily.body.semiBold,
+    fontSize: scaleFont(13),
     lineHeight: scaleFont(18),
-    color: '#0F172A',
-    fontWeight: typography.fontWeight.bold,
+    color: '#1E293B',
+    fontWeight: typography.fontWeight.semibold,
     marginTop: moderateScale(8),
     minHeight: scaleFont(36),
   },
   metaRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: moderateScale(8),
+    marginTop: moderateScale(10),
   },
   metaText: {
     fontFamily: typography.fontFamily.body.regular,
-    fontSize: scaleFont(11.5),
+    fontSize: scaleFont(11),
     color: '#64748B',
+    opacity: 0.85,
     marginLeft: moderateScale(5),
     flex: 1,
   },

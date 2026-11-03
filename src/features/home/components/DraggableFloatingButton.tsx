@@ -4,7 +4,7 @@
  * Fully draggable anywhere on the screen with smooth physics and boundary clamping.
  */
 
-import React, { useRef } from 'react';
+import React from 'react';
 import {
   Animated,
   Dimensions,
@@ -52,10 +52,10 @@ export const DraggableFloatingButton: React.FC<DraggableFloatingButtonProps> = (
     ? screenHeight - initialBottomOffset - BUTTON_SIZE
     : screenHeight - navBarHeight - BUTTON_SIZE - moderateScale(10);
 
-  const pan = useRef(new Animated.ValueXY({ x: defaultX, y: defaultY })).current;
-  const scale = useRef(new Animated.Value(1)).current;
+  const pan = React.useRef(new Animated.ValueXY({ x: defaultX, y: defaultY })).current;
+  const scale = React.useRef(new Animated.Value(1)).current;
 
-  const panResponder = useRef(
+  const panResponder = React.useRef(
     PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponder: (_, gestureState) => {
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     zIndex: 9999,
-    elevation: 10,
+    elevation: 8,
   },
   button: {
     width: BUTTON_SIZE,
@@ -157,10 +157,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: '#000000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.32,
-    shadowRadius: 6,
-    elevation: 8,
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    elevation: 5,
   },
   label: {
     ...typographyPresets.floatingButtonLabel,

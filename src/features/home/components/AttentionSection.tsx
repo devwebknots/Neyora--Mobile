@@ -84,7 +84,7 @@ export const AttentionSection: React.FC<AttentionSectionProps> = ({
 
         {/* Time Schedule Banner */}
         <View style={styles.timeBanner}>
-          <ClockIcon size={moderateScale(16)} color={colors.primary} />
+          <ClockIcon size={moderateScale(15)} color={colors.primary} />
           <Text style={styles.timeText}>
             Tomorrow, 10:00 AM – 10:45 AM{' '}
             <Text style={styles.durationText}>(45m)</Text>
@@ -118,7 +118,7 @@ export const AttentionSection: React.FC<AttentionSectionProps> = ({
               end={{ x: 1, y: 0.5 }}
               style={styles.confirmButtonGradient}
             >
-              <CheckmarkIcon size={moderateScale(15)} color={colors.white} strokeWidth={2.5} />
+              <CheckmarkIcon size={moderateScale(14)} color={colors.white} strokeWidth={2.2} />
               <Text style={styles.confirmButtonText}>Confirm</Text>
             </LinearGradient>
           </TouchableOpacity>
@@ -134,7 +134,7 @@ export const AttentionSection: React.FC<AttentionSectionProps> = ({
         accessibilityLabel="Unfold 2 more items"
       >
         <Text style={styles.unfoldText}>Unfold 2 more items</Text>
-        <ChevronDownIcon size={moderateScale(15)} color="#0F172A" strokeWidth={2} />
+        <ChevronDownIcon size={moderateScale(14)} color="#64748B" strokeWidth={1.8} />
       </TouchableOpacity>
     </View>
   );
@@ -143,7 +143,7 @@ export const AttentionSection: React.FC<AttentionSectionProps> = ({
 const styles = StyleSheet.create({
   sectionContainer: {
     marginHorizontal: spacing.screenHorizontal,
-    marginTop: moderateScale(22),
+    marginTop: moderateScale(24),
   },
   headerRow: {
     flexDirection: 'row',
@@ -156,38 +156,42 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   sectionTitle: {
-    fontFamily: typography.fontFamily.body.bold,
-    fontSize: scaleFont(18),
-    color: '#0F172A',
-    fontWeight: typography.fontWeight.bold,
+    fontFamily: typography.fontFamily.heading.medium,
+    fontSize: scaleFont(17),
+    lineHeight: scaleFont(24),
+    letterSpacing: -0.3,
+    color: '#1E293B',
+    fontWeight: '500',
     marginRight: moderateScale(8),
   },
   countBadge: {
-    width: moderateScale(22),
-    height: moderateScale(22),
-    borderRadius: moderateScale(11),
-    backgroundColor: '#DBEAFE',
+    width: moderateScale(20),
+    height: moderateScale(20),
+    borderRadius: moderateScale(10),
+    backgroundColor: '#EFF6FF',
+    borderWidth: 1,
+    borderColor: '#DBEAFE',
     alignItems: 'center',
     justifyContent: 'center',
   },
   countBadgeText: {
-    fontFamily: typography.fontFamily.body.bold,
-    fontSize: scaleFont(12),
-    color: colors.primary,
-    fontWeight: typography.fontWeight.bold,
-  },
-  viewAllLink: {
     fontFamily: typography.fontFamily.body.semiBold,
-    fontSize: scaleFont(13),
+    fontSize: scaleFont(11),
     color: colors.primary,
     fontWeight: typography.fontWeight.semibold,
+  },
+  viewAllLink: {
+    fontFamily: typography.fontFamily.body.medium,
+    fontSize: scaleFont(12.5),
+    color: colors.primary,
+    fontWeight: typography.fontWeight.medium,
   },
   card: {
     backgroundColor: colors.surface,
     borderRadius: moderateScale(16),
     borderWidth: 1,
     borderColor: '#E2E8F0',
-    padding: moderateScale(15),
+    padding: moderateScale(16),
     ...shadows.sm,
   },
   cardHeaderRow: {
@@ -200,83 +204,89 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   avatarCircle: {
-    width: moderateScale(40),
-    height: moderateScale(40),
-    borderRadius: moderateScale(20),
-    backgroundColor: '#EDE9FE',
+    width: moderateScale(38),
+    height: moderateScale(38),
+    borderRadius: moderateScale(19),
+    backgroundColor: '#F5F3FF',
+    borderWidth: 1,
+    borderColor: '#EDE9FE',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: moderateScale(11),
   },
   avatarText: {
-    fontFamily: typography.fontFamily.body.bold,
+    fontFamily: typography.fontFamily.body.semiBold,
     fontSize: scaleFont(12),
     color: '#6366F1',
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: typography.fontWeight.semibold,
   },
   userTextColumn: {
     justifyContent: 'center',
   },
   userName: {
-    fontFamily: typography.fontFamily.body.bold,
-    fontSize: scaleFont(15),
-    color: '#0F172A',
-    fontWeight: typography.fontWeight.bold,
+    fontFamily: typography.fontFamily.body.semiBold,
+    fontSize: scaleFont(14.5),
+    color: '#1E293B',
+    fontWeight: typography.fontWeight.semibold,
   },
   inquiryType: {
     fontFamily: typography.fontFamily.body.regular,
-    fontSize: scaleFont(12),
+    fontSize: scaleFont(11.5),
     color: '#64748B',
+    opacity: 0.85,
     marginTop: moderateScale(1),
   },
   statusBadge: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#FEF3C7',
-    paddingHorizontal: moderateScale(8),
-    paddingVertical: moderateScale(4),
-    borderRadius: moderateScale(12),
+    paddingHorizontal: moderateScale(7.5),
+    paddingVertical: moderateScale(3),
+    borderRadius: moderateScale(10),
   },
   statusDot: {
-    width: moderateScale(6),
-    height: moderateScale(6),
-    borderRadius: moderateScale(3),
+    width: moderateScale(5.5),
+    height: moderateScale(5.5),
+    borderRadius: moderateScale(2.75),
     backgroundColor: '#D97706',
     marginRight: moderateScale(5),
   },
   statusText: {
-    fontFamily: typography.fontFamily.body.semiBold,
-    fontSize: scaleFont(11),
+    fontFamily: typography.fontFamily.body.medium,
+    fontSize: scaleFont(10.5),
     color: '#D97706',
-    fontWeight: typography.fontWeight.semibold,
+    fontWeight: typography.fontWeight.medium,
   },
   unitTitle: {
-    fontFamily: typography.fontFamily.body.bold,
-    fontSize: scaleFont(15.5),
-    color: '#0F172A',
-    fontWeight: typography.fontWeight.bold,
-    marginTop: moderateScale(13),
+    fontFamily: typography.fontFamily.body.medium,
+    fontSize: scaleFont(14),
+    lineHeight: scaleFont(19),
+    color: '#334155',
+    fontWeight: typography.fontWeight.medium,
+    marginTop: moderateScale(12),
   },
   timeBanner: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#F8FAFC',
+    borderWidth: 1,
+    borderColor: '#F1F5F9',
     borderRadius: moderateScale(10),
     paddingHorizontal: moderateScale(11),
-    paddingVertical: moderateScale(9),
+    paddingVertical: moderateScale(8),
     marginTop: moderateScale(10),
   },
   timeText: {
-    fontFamily: typography.fontFamily.body.semiBold,
-    fontSize: scaleFont(12.5),
-    color: '#0F172A',
-    fontWeight: typography.fontWeight.semibold,
+    fontFamily: typography.fontFamily.body.medium,
+    fontSize: scaleFont(12),
+    color: '#334155',
+    fontWeight: typography.fontWeight.medium,
     marginLeft: moderateScale(8),
   },
   durationText: {
     fontFamily: typography.fontFamily.body.regular,
-    fontSize: scaleFont(12),
-    color: '#64748B',
+    fontSize: scaleFont(11.5),
+    color: '#94A3B8',
     fontWeight: typography.fontWeight.regular,
   },
   actionsRow: {
@@ -287,8 +297,8 @@ const styles = StyleSheet.create({
   },
   reviewButton: {
     flex: 1,
-    height: moderateScale(42),
-    borderRadius: moderateScale(12),
+    height: moderateScale(40),
+    borderRadius: moderateScale(10),
     backgroundColor: colors.surface,
     borderWidth: 1,
     borderColor: '#E2E8F0',
@@ -296,45 +306,44 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   reviewButtonText: {
-    fontFamily: typography.fontFamily.body.semiBold,
-    fontSize: scaleFont(13.5),
-    color: '#0F172A',
-    fontWeight: typography.fontWeight.semibold,
+    fontFamily: typography.fontFamily.body.medium,
+    fontSize: scaleFont(13),
+    color: '#475569',
+    fontWeight: typography.fontWeight.medium,
   },
   confirmButtonTouchable: {
     flex: 1,
   },
   confirmButtonGradient: {
-    height: moderateScale(42),
-    borderRadius: moderateScale(12),
+    height: moderateScale(40),
+    borderRadius: moderateScale(10),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
   },
   confirmButtonText: {
     fontFamily: typography.fontFamily.body.semiBold,
-    fontSize: scaleFont(13.5),
+    fontSize: scaleFont(13),
     color: colors.white,
     fontWeight: typography.fontWeight.semibold,
     marginLeft: moderateScale(6),
   },
   unfoldButton: {
     marginTop: moderateScale(10),
-    height: moderateScale(38),
-    borderRadius: moderateScale(12),
-    backgroundColor: colors.surface,
+    height: moderateScale(36),
+    borderRadius: moderateScale(10),
+    backgroundColor: '#F8FAFC',
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: 'rgba(226, 232, 240, 0.8)',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    ...shadows.sm,
   },
   unfoldText: {
-    fontFamily: typography.fontFamily.body.semiBold,
-    fontSize: scaleFont(12.5),
-    color: '#0F172A',
-    fontWeight: typography.fontWeight.semibold,
+    fontFamily: typography.fontFamily.body.medium,
+    fontSize: scaleFont(12),
+    color: '#475569',
+    fontWeight: typography.fontWeight.medium,
     marginRight: moderateScale(6),
   },
 });

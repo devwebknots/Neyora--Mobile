@@ -14,6 +14,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import { moderateScale } from '@/utils/responsive';
 import { colors } from '@/config/theme';
 import {
   AlertBanner,
@@ -148,7 +149,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    paddingBottom: 16,
+    paddingBottom: moderateScale(28),
   },
 });
 

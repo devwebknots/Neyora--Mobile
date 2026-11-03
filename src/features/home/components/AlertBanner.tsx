@@ -63,7 +63,7 @@ export const AlertBanner: React.FC<AlertBannerProps> = ({
         hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
         accessibilityLabel="Expand alert details"
       >
-        <ChevronDownIcon size={moderateScale(15)} color="#B45309" strokeWidth={2.5} />
+        <ChevronDownIcon size={moderateScale(14)} color="#B45309" strokeWidth={2} />
       </TouchableOpacity>
     </TouchableOpacity>
   );
@@ -73,23 +73,23 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: spacing.screenHorizontal,
     marginTop: -moderateScale(26), // Seamless overlap onto header bottom curve
-    backgroundColor: '#FFFDF0',
+    backgroundColor: '#FFFDF9',
     borderWidth: 1,
-    borderColor: '#FEF08A',
+    borderColor: 'rgba(254, 240, 138, 0.65)',
     borderRadius: moderateScale(16),
     paddingHorizontal: moderateScale(14),
-    paddingVertical: moderateScale(13),
+    paddingVertical: moderateScale(12),
     flexDirection: 'row',
     alignItems: 'center',
     ...shadows.sm,
     shadowColor: '#78350F',
-    shadowOpacity: 0.08,
+    shadowOpacity: 0.04,
   },
   iconBox: {
-    width: moderateScale(40),
-    height: moderateScale(40),
-    borderRadius: moderateScale(12),
-    backgroundColor: '#FEF3C7',
+    width: moderateScale(38),
+    height: moderateScale(38),
+    borderRadius: moderateScale(10),
+    backgroundColor: 'rgba(254, 243, 199, 0.75)',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: moderateScale(12),
@@ -105,35 +105,36 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   titleText: {
-    fontFamily: typography.fontFamily.body.bold,
-    fontSize: scaleFont(14.5),
-    color: '#0F172A',
-    fontWeight: typography.fontWeight.bold,
+    fontFamily: typography.fontFamily.body.semiBold,
+    fontSize: scaleFont(14),
+    color: '#1E293B',
+    fontWeight: typography.fontWeight.semibold,
     marginRight: moderateScale(8),
   },
   dayBadge: {
-    backgroundColor: '#FDE68A',
-    paddingHorizontal: moderateScale(7),
+    backgroundColor: 'rgba(253, 230, 138, 0.6)',
+    paddingHorizontal: moderateScale(6.5),
     paddingVertical: moderateScale(2),
-    borderRadius: moderateScale(6),
+    borderRadius: moderateScale(5),
   },
   dayBadgeText: {
-    fontFamily: typography.fontFamily.body.semiBold,
-    fontSize: scaleFont(10.5),
+    fontFamily: typography.fontFamily.body.medium,
+    fontSize: scaleFont(10),
     color: '#92400E',
-    fontWeight: typography.fontWeight.semibold,
+    fontWeight: typography.fontWeight.medium,
   },
   subtitleText: {
     fontFamily: typography.fontFamily.body.regular,
     fontSize: scaleFont(11.5),
     color: '#64748B',
-    marginTop: moderateScale(3),
+    opacity: 0.85,
+    marginTop: moderateScale(2.5),
   },
   chevronButton: {
-    width: moderateScale(26),
-    height: moderateScale(26),
-    borderRadius: moderateScale(13),
-    backgroundColor: '#FEF3C7',
+    width: moderateScale(24),
+    height: moderateScale(24),
+    borderRadius: moderateScale(12),
+    backgroundColor: 'rgba(254, 243, 199, 0.5)',
     alignItems: 'center',
     justifyContent: 'center',
   },
