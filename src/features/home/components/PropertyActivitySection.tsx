@@ -164,10 +164,12 @@ const styles = StyleSheet.create({
     marginBottom: moderateScale(12),
   },
   sectionTitle: {
-    fontFamily: typography.fontFamily.body.bold,
-    fontSize: scaleFont(18),
+    fontFamily: typography.fontFamily.heading.medium,
+    fontSize: scaleFont(17),
+    lineHeight: scaleFont(25.5),
+    letterSpacing: -0.43,
     color: '#0F172A',
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: '500',
   },
   viewActivityRow: {
     flexDirection: 'row',

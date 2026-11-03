@@ -139,10 +139,12 @@ const styles = StyleSheet.create({
     alignItems: 'baseline',
   },
   sectionTitle: {
-    fontFamily: typography.fontFamily.body.bold,
-    fontSize: scaleFont(18),
+    fontFamily: typography.fontFamily.heading.medium,
+    fontSize: scaleFont(17),
+    lineHeight: scaleFont(25.5),
+    letterSpacing: -0.43,
     color: '#0F172A',
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: '500',
     marginRight: moderateScale(6),
   },
   eventCountText: {
@@ -165,8 +167,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   scrollContent: {
-    paddingLeft: spacing.screenHorizontal,
-    paddingRight: moderateScale(70), // Leave room so FAB doesn't permanently obscure last item
+    paddingHorizontal: spacing.screenHorizontal,
     gap: moderateScale(12),
   },
   eventCard: {
