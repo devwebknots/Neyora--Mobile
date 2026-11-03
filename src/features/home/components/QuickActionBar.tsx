@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import { LinearGradient } from '@/components/LinearGradient';
 import { colors, gradients, typography } from '@/config/theme';
 import { KeyIcon, PlusIcon, ShareIcon, UsersIcon } from '@/components/icons';
 import { moderateScale, scaleFont } from '@/utils/responsive';

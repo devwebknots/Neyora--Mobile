@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import { LinearGradient } from '@/components/LinearGradient';
 import { colors, gradients, shadows, typography } from '@/config/theme';
 import { CheckmarkIcon, ChevronDownIcon, ClockIcon } from '@/components/icons';
 import { moderateScale, scaleFont } from '@/utils/responsive';
