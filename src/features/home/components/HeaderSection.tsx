@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import { LinearGradient } from '@/components/LinearGradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { colors, gradients, typography } from '@/config/theme';
+import { colors, gradients, spacing, typography } from '@/config/theme';
 import { BellIcon, ShieldIcon } from '@/components/icons';
 import { moderateScale, scaleFont } from '@/utils/responsive';
 
@@ -115,7 +115,7 @@ export const HeaderSection: React.FC<HeaderSectionProps> = ({
 
 const styles = StyleSheet.create({
   headerContainer: {
-    paddingHorizontal: moderateScale(18),
+    paddingHorizontal: spacing.screenHorizontal,
     paddingBottom: moderateScale(48), // Padding allowance for overlapping alert card
     borderBottomLeftRadius: moderateScale(28),
     borderBottomRightRadius: moderateScale(28),
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
   brandSubtitle: {
     fontFamily: typography.fontFamily.body.regular,
     fontSize: scaleFont(11.5),
-    color: '#C7D2FE',
+    color: colors.subtitlePeriwinkle,
     marginTop: moderateScale(1),
   },
   actionsRow: {
@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
   dateSubtitle: {
     fontFamily: typography.fontFamily.body.regular,
     fontSize: scaleFont(12),
-    color: '#C7D2FE',
+    color: colors.subtitlePeriwinkle,
     marginTop: moderateScale(8),
   },
   shieldButton: {

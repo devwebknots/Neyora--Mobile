@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { colors, shadows, typography } from '@/config/theme';
+import { colors, shadows, spacing, typography } from '@/config/theme';
 import {
   ChevronRightIcon,
   MessageBubbleIcon,
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: moderateScale(18),
+    paddingHorizontal: spacing.screenHorizontal,
     marginBottom: moderateScale(12),
   },
   titleRow: {
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   scrollContent: {
-    paddingLeft: moderateScale(18),
+    paddingLeft: spacing.screenHorizontal,
     paddingRight: moderateScale(70), // Leave room so FAB doesn't permanently obscure last item
     gap: moderateScale(12),
   },
@@ -251,7 +251,7 @@ const styles = StyleSheet.create({
   },
   fabButton: {
     position: 'absolute',
-    right: moderateScale(18),
+    right: spacing.screenHorizontal,
     top: moderateScale(10),
     width: moderateScale(54),
     height: moderateScale(54),

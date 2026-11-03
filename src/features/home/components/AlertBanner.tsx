@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { shadows, typography } from '@/config/theme';
+import { shadows, spacing, typography } from '@/config/theme';
 import { ChevronDownIcon, WarningTriangleIcon } from '@/components/icons';
 import { moderateScale, scaleFont } from '@/utils/responsive';
 
@@ -71,7 +71,7 @@ export const AlertBanner: React.FC<AlertBannerProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: moderateScale(18),
+    marginHorizontal: spacing.screenHorizontal,
     marginTop: -moderateScale(26), // Seamless overlap onto header bottom curve
     backgroundColor: '#FFFDF0',
     borderWidth: 1,

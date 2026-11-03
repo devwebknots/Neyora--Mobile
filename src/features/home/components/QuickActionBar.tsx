@@ -11,9 +11,9 @@ import {
   View,
 } from 'react-native';
 import { LinearGradient } from '@/components/LinearGradient';
-import { colors, typographyPresets } from '@/config/theme';
+import { colors, gradients, spacing, typographyPresets } from '@/config/theme';
 import { KeyIcon, PlusIcon, ShareIcon, UsersIcon } from '@/components/icons';
-import { moderateScale, scaleFont } from '@/utils/responsive';
+import { moderateScale } from '@/utils/responsive';
 
 export interface QuickActionBarProps {
   onNewEventPress?: () => void;
@@ -33,35 +33,35 @@ export const QuickActionBar: React.FC<QuickActionBarProps> = ({
       id: 'newEvent',
       title: 'New event',
       icon: <PlusIcon size={moderateScale(17)} color={colors.white} />,
-      boxBg: '#749AED80',
+      boxStyle: styles.newEventBox,
       onPress: onNewEventPress,
     },
     {
       id: 'schedule',
       title: 'Schedule',
       icon: <UsersIcon size={moderateScale(17)} color={colors.white} />,
-      boxBg: '#8A4BC280',
+      boxStyle: styles.scheduleBox,
       onPress: onSchedulePress,
     },
     {
       id: 'availability',
       title: 'Avaliability',
       icon: <KeyIcon size={moderateScale(17)} color={colors.white} />,
-      boxBg: '#3B967780',
+      boxStyle: styles.availabilityBox,
       onPress: onAvailabilityPress,
     },
     {
       id: 'shareLink',
       title: 'Share link',
       icon: <ShareIcon size={moderateScale(17)} color={colors.white} />,
-      boxBg: '#DA835580',
+      boxStyle: styles.shareLinkBox,
       onPress: onShareLinkPress,
     },
   ];
 
   return (
     <LinearGradient
-      colors={['#03264C', '#0659B2']}
+      colors={gradients.quickActions}
       start={{ x: 0, y: 0.5 }}
       end={{ x: 1, y: 0.5 }}
       style={styles.container}
@@ -76,7 +76,7 @@ export const QuickActionBar: React.FC<QuickActionBarProps> = ({
             accessibilityRole="button"
             accessibilityLabel={action.title}
           >
-            <View style={[styles.iconContainer, { backgroundColor: action.boxBg }]}>
+            <View style={[styles.iconContainer, action.boxStyle]}>
               {action.icon}
             </View>
             <Text style={styles.actionLabel}>{action.title}</Text>
@@ -89,9 +89,7 @@ export const QuickActionBar: React.FC<QuickActionBarProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    maxWidth: 350,
-    alignSelf: 'center',
+    marginHorizontal: spacing.screenHorizontal,
     minHeight: 75,
     marginTop: moderateScale(16),
     borderRadius: 20,
@@ -120,6 +118,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 5,
+  },
+  newEventBox: {
+    backgroundColor: colors.quickActionColors.newEvent,
+  },
+  scheduleBox: {
+    backgroundColor: colors.quickActionColors.schedule,
+  },
+  availabilityBox: {
+    backgroundColor: colors.quickActionColors.availability,
+  },
+  shareLinkBox: {
+    backgroundColor: colors.quickActionColors.shareLink,
   },
   actionLabel: {
     ...typographyPresets.quickActionLabel,

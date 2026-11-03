@@ -20,6 +20,7 @@ export const colors = {
   primaryDark: '#1D4ED8',
   secondary: '#64748B',
   accent: '#F59E0B',
+  subtitlePeriwinkle: '#C7D2FE',
 
   // Status & Feedback
   success: '#10B981',
@@ -73,6 +74,12 @@ export const colors = {
     tagBg: '#D1FAE5',
     tagText: '#059669',
   },
+  quickActionColors: {
+    newEvent: '#749AED80',
+    schedule: '#8A4BC280',
+    availability: '#3B967780',
+    shareLink: '#DA835580',
+  },
 
   // Base Neutrals
   white: '#FFFFFF',
@@ -117,6 +124,7 @@ export const spacing = {
   xxl: moderateScale(24),
   xxxl: moderateScale(32),
   section: moderateScale(24),
+  screenHorizontal: 20,
 } as const;
 
 export const borderRadius = {

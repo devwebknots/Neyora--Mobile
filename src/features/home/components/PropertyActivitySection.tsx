@@ -13,7 +13,7 @@ import {
   View,
 } from 'react-native';
 import { LinearGradient } from '@/components/LinearGradient';
-import { colors, gradients, shadows, typography } from '@/config/theme';
+import { colors, gradients, shadows, spacing, typography } from '@/config/theme';
 import {
   ChevronDownIcon,
   ChevronRightIcon,
@@ -153,7 +153,7 @@ export const PropertyActivitySection: React.FC<PropertyActivitySectionProps> = (
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    marginHorizontal: moderateScale(18),
+    marginHorizontal: spacing.screenHorizontal,
     marginTop: moderateScale(22),
     marginBottom: moderateScale(24),
   },

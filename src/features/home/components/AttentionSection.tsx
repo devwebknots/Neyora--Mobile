@@ -12,7 +12,7 @@ import {
   View,
 } from 'react-native';
 import { LinearGradient } from '@/components/LinearGradient';
-import { colors, gradients, shadows, typography } from '@/config/theme';
+import { colors, gradients, shadows, spacing, typography } from '@/config/theme';
 import { CheckmarkIcon, ChevronDownIcon, ClockIcon } from '@/components/icons';
 import { moderateScale, scaleFont } from '@/utils/responsive';
 
@@ -142,7 +142,7 @@ export const AttentionSection: React.FC<AttentionSectionProps> = ({
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    marginHorizontal: moderateScale(18),
+    marginHorizontal: spacing.screenHorizontal,
     marginTop: moderateScale(22),
   },
   headerRow: {
