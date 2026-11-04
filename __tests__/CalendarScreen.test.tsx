@@ -63,4 +63,50 @@ describe('Calendar Screen Architecture & Specifications', () => {
     expect(image.props.source).toBeDefined();
     expect(root.findByProps({ children: 'Unit 402 – 2BR Luxury View' })).toBeDefined();
   });
+
+  test('renders CalendarMonthCard with botanical header image and controls', async () => {
+    const { CalendarMonthCard } = require('../src/features/calendar/components/CalendarMonthCard');
+    const onPrev = jest.fn();
+    const onNext = jest.fn();
+    const onPicker = jest.fn();
+    const onDropdown = jest.fn();
+
+    let tree: ReactTestRenderer.ReactTestRenderer | undefined;
+    await ReactTestRenderer.act(() => {
+      tree = ReactTestRenderer.create(
+        <CalendarMonthCard
+          onPrevMonth={onPrev}
+          onNextMonth={onNext}
+          onCalendarPickerPress={onPicker}
+          onMonthDropdownPress={onDropdown}
+        />
+      );
+    });
+    const root = tree!.root;
+
+    // Verify header image exists
+    const headerImage = root.findByProps({ resizeMode: 'cover' });
+    expect(headerImage.props.source).toBeDefined();
+
+    // Verify accessible and interactive controls
+    const monthDropdown = root.findByProps({ accessibilityLabel: 'Select Month, October' });
+    const prevButton = root.findByProps({ accessibilityLabel: 'Previous Month' });
+    const nextButton = root.findByProps({ accessibilityLabel: 'Next Month' });
+    const pickerButton = root.findByProps({ accessibilityLabel: 'Calendar Picker' });
+
+    expect(monthDropdown).toBeDefined();
+    expect(prevButton).toBeDefined();
+    expect(nextButton).toBeDefined();
+    expect(pickerButton).toBeDefined();
+
+    monthDropdown.props.onPress();
+    prevButton.props.onPress();
+    nextButton.props.onPress();
+    pickerButton.props.onPress();
+
+    expect(onDropdown).toHaveBeenCalledTimes(1);
+    expect(onPrev).toHaveBeenCalledTimes(1);
+    expect(onNext).toHaveBeenCalledTimes(1);
+    expect(onPicker).toHaveBeenCalledTimes(1);
+  });
 });

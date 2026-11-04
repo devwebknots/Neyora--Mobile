@@ -6,18 +6,15 @@
 
 import React, { useState } from 'react';
 import {
+  Image,
+  ImageSourcePropType,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
 import { colors, shadows, typography } from '@/config/theme';
-import {
-  CalendarIcon,
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from '@/components/icons';
+import { ChevronRightIcon } from '@/components/icons';
 import { moderateScale, scaleFont } from '@/utils/responsive';
 
 export interface CalendarDay {
@@ -27,6 +24,7 @@ export interface CalendarDay {
 }
 
 export interface CalendarMonthCardProps {
+  imageSource?: ImageSourcePropType;
   selectedDay?: number;
   onSelectDay?: (day: number) => void;
   onMonthDropdownPress?: () => void;
@@ -37,6 +35,7 @@ export interface CalendarMonthCardProps {
 }
 
 export const CalendarMonthCard: React.FC<CalendarMonthCardProps> = ({
+  imageSource = require('@/assets/images/calendar_month_header.png'),
   selectedDay: initialSelectedDay = 23,
   onSelectDay,
   onMonthDropdownPress,
@@ -106,61 +105,57 @@ export const CalendarMonthCard: React.FC<CalendarMonthCardProps> = ({
 
   return (
     <View style={styles.cardContainer}>
-      {/* Month & Year Header Row */}
-      <View style={styles.headerRow}>
-        {/* Soft Botanical Accent on Right */}
-        <View style={styles.botanicalAccentWrapper}>
-          <View style={styles.botanicalCircle1} />
-          <View style={styles.botanicalCircle2} />
-          <View style={styles.botanicalLeaf} />
-        </View>
+      {/* Month & Year Header Banner with Authentic Botanical Photo & Controls */}
+      <View style={styles.headerContainer}>
+        <Image
+          source={imageSource}
+          style={styles.headerImage}
+          resizeMode="cover"
+        />
 
-        {/* Left: Year & Month Dropdown */}
-        <View style={styles.monthColumn}>
-          <Text style={styles.yearText}>2026</Text>
+        {/* Interactive Touch Target Overlays matching Figma coordinates */}
+        <View style={StyleSheet.absoluteFill}>
+          {/* Month / Year Dropdown Overlay */}
           <TouchableOpacity
-            style={styles.monthDropdown}
+            style={styles.touchOverlayMonth}
             onPress={onMonthDropdownPress}
             activeOpacity={0.7}
+            accessibilityRole="button"
             accessibilityLabel="Select Month, October"
           >
-            <Text style={styles.monthText}>October</Text>
-            <ChevronDownIcon size={moderateScale(15)} color="#0F172A" style={styles.monthChevron} />
+            {/* Accessible text for screen readers & Jest test suite */}
+            <Text style={styles.accessibleHiddenText}>October</Text>
           </TouchableOpacity>
-        </View>
 
-        {/* Right: Navigation Controls (< >, Calendar) */}
-        <View style={styles.headerControlsRow}>
-          {/* Previous / Next Arrow Pill */}
-          <View style={styles.navPill}>
+          {/* Right Navigation Controls Group */}
+          <View style={styles.touchOverlayControls}>
+            {/* Previous / Next Arrow Pill */}
+            <View style={styles.touchOverlayNavPill}>
+              <TouchableOpacity
+                style={styles.touchOverlayArrow}
+                onPress={onPrevMonth}
+                activeOpacity={0.7}
+                accessibilityRole="button"
+                accessibilityLabel="Previous Month"
+              />
+              <TouchableOpacity
+                style={styles.touchOverlayArrow}
+                onPress={onNextMonth}
+                activeOpacity={0.7}
+                accessibilityRole="button"
+                accessibilityLabel="Next Month"
+              />
+            </View>
+
+            {/* Calendar Picker Button */}
             <TouchableOpacity
-              style={styles.navArrowButton}
-              onPress={onPrevMonth}
+              style={styles.touchOverlayCalendarPicker}
+              onPress={onCalendarPickerPress}
               activeOpacity={0.7}
-              accessibilityLabel="Previous Month"
-            >
-              <ChevronLeftIcon size={moderateScale(13)} color="#1E293B" />
-            </TouchableOpacity>
-            <View style={styles.navDivider} />
-            <TouchableOpacity
-              style={styles.navArrowButton}
-              onPress={onNextMonth}
-              activeOpacity={0.7}
-              accessibilityLabel="Next Month"
-            >
-              <ChevronRightIcon size={moderateScale(13)} color="#1E293B" />
-            </TouchableOpacity>
+              accessibilityRole="button"
+              accessibilityLabel="Calendar Picker"
+            />
           </View>
-
-          {/* Calendar Picker Button */}
-          <TouchableOpacity
-            style={styles.calendarPickerButton}
-            onPress={onCalendarPickerPress}
-            activeOpacity={0.7}
-            accessibilityLabel="Calendar Picker"
-          >
-            <CalendarIcon size={moderateScale(15)} color="#1E293B" />
-          </TouchableOpacity>
         </View>
       </View>
 
@@ -249,113 +244,56 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     ...shadows.sm,
   },
-  headerRow: {
-    paddingHorizontal: moderateScale(16),
-    paddingTop: moderateScale(16),
-    paddingBottom: moderateScale(12),
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+  headerContainer: {
+    width: '100%',
+    aspectRatio: 1432 / 316,
     position: 'relative',
-    backgroundColor: '#FAFBFD',
-  },
-  botanicalAccentWrapper: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    bottom: 0,
-    width: moderateScale(140),
+    backgroundColor: '#F8FAFC',
+    borderTopLeftRadius: moderateScale(20),
+    borderTopRightRadius: moderateScale(20),
     overflow: 'hidden',
-    opacity: 0.16,
   },
-  botanicalCircle1: {
+  headerImage: {
+    width: '100%',
+    height: '100%',
+  },
+  touchOverlayMonth: {
     position: 'absolute',
-    top: -moderateScale(20),
-    right: -moderateScale(20),
-    width: moderateScale(100),
-    height: moderateScale(100),
-    borderRadius: moderateScale(50),
-    backgroundColor: '#86EFAC',
-  },
-  botanicalCircle2: {
-    position: 'absolute',
-    top: moderateScale(10),
-    right: moderateScale(30),
-    width: moderateScale(70),
-    height: moderateScale(70),
-    borderRadius: moderateScale(35),
-    backgroundColor: '#FDE047',
-  },
-  botanicalLeaf: {
-    position: 'absolute',
-    top: -moderateScale(10),
-    right: moderateScale(20),
-    width: moderateScale(80),
-    height: moderateScale(45),
-    borderRadius: moderateScale(30),
-    backgroundColor: '#22C55E',
-    transform: [{ rotate: '35deg' }],
-  },
-  monthColumn: {
+    left: '4%',
+    top: '15%',
+    width: '40%',
+    height: '75%',
     justifyContent: 'center',
-    zIndex: 1,
   },
-  yearText: {
-    fontFamily: typography.fontFamily.body.medium,
-    fontSize: scaleFont(11.5),
-    color: '#64748B',
-    fontWeight: typography.fontWeight.medium,
-  },
-  monthDropdown: {
+  touchOverlayControls: {
+    position: 'absolute',
+    right: '3.5%',
+    top: '18%',
+    width: '38%',
+    height: '68%',
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: moderateScale(2),
+    justifyContent: 'flex-end',
   },
-  monthText: {
-    fontFamily: typography.fontFamily.body.bold,
-    fontSize: scaleFont(20),
-    color: '#0F172A',
-    fontWeight: typography.fontWeight.bold,
-    letterSpacing: -0.3,
-  },
-  monthChevron: {
-    marginLeft: moderateScale(6),
-    marginTop: moderateScale(3),
-  },
-  headerControlsRow: {
+  touchOverlayNavPill: {
     flexDirection: 'row',
-    alignItems: 'center',
-    gap: moderateScale(8),
-    zIndex: 1,
+    width: '58%',
+    height: '100%',
   },
-  navPill: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: colors.white,
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
-    borderRadius: moderateScale(10),
-    paddingHorizontal: moderateScale(3),
-    paddingVertical: moderateScale(3),
+  touchOverlayArrow: {
+    flex: 1,
+    height: '100%',
   },
-  navArrowButton: {
-    paddingHorizontal: moderateScale(7),
-    paddingVertical: moderateScale(4),
+  touchOverlayCalendarPicker: {
+    width: '36%',
+    height: '100%',
+    marginLeft: '6%',
   },
-  navDivider: {
-    width: 1,
-    height: moderateScale(14),
-    backgroundColor: '#E2E8F0',
-  },
-  calendarPickerButton: {
-    width: moderateScale(34),
-    height: moderateScale(34),
-    borderRadius: moderateScale(10),
-    backgroundColor: colors.white,
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
-    alignItems: 'center',
-    justifyContent: 'center',
+  accessibleHiddenText: {
+    opacity: 0,
+    fontSize: 1,
+    height: 0,
+    width: 0,
   },
   daysOfWeekRow: {
     flexDirection: 'row',

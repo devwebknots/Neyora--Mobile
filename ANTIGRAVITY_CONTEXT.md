@@ -143,7 +143,7 @@ Supports two operational modes:
      - Action buttons: `↑ ICS` and `+ EVENT`
      - View mode switcher: `Month`, `Week`, `Day`, `Agenda` (dynamically switches between Month grid view and Week timeline format).
   3. `CalendarMonthCard` (rendered when `viewMode === 'Month'`):
-     - October 2026 header with year, month dropdown, `< >` arrow navigation pill, and date picker shortcut.
+     - October 2026 header banner using high-fidelity Figma botanical asset (`calendar_month_header.png`) with sunlit wall, year, month dropdown, `< >` navigation pill, calendar picker shortcut, and interactive touch target overlays.
      - 5-week month grid with exact dot indicators per day.
      - Day 23 active selected circle in `#2563EB`.
      - Bottom strip: `Upcoming: Unit 402 →`.
