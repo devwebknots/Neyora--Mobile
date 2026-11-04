@@ -109,4 +109,30 @@ describe('Calendar Screen Architecture & Specifications', () => {
     expect(onNext).toHaveBeenCalledTimes(1);
     expect(onPicker).toHaveBeenCalledTimes(1);
   });
+
+  test('switches to Day view and renders Day navigation bar, alert banner, and ShowingTourCard', async () => {
+    let tree: ReactTestRenderer.ReactTestRenderer | undefined;
+    await ReactTestRenderer.act(() => {
+      tree = ReactTestRenderer.create(<CalendarScreen />);
+    });
+    const root = tree!.root;
+
+    // Find the "Day view" tab touchable
+    const dayButton = root.findByProps({ accessibilityLabel: 'Day view' });
+    expect(dayButton).toBeDefined();
+
+    await ReactTestRenderer.act(() => {
+      dayButton.props.onPress();
+    });
+
+    // Verify Day view elements
+    expect(root.findByProps({ children: 'Wednesday, Oct 23' })).toBeDefined();
+    expect(root.findByProps({ children: 'Today' })).toBeDefined();
+    expect(root.findByProps({ children: 'Elevator Modernization (All-Day)' })).toBeDefined();
+    expect(root.findByProps({ children: 'Day 1 of 2' })).toBeDefined();
+    expect(root.findByProps({ children: 'Unit 402 – 2BR Luxury View' })).toBeDefined();
+    expect(root.findByProps({ children: 'Marcus Reed' })).toBeDefined();
+    expect(root.findByProps({ children: 'Elena Vance' })).toBeDefined();
+    expect(root.findByProps({ children: 'Open Showing Pack' })).toBeDefined();
+  });
 });

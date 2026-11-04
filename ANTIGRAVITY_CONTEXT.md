@@ -165,7 +165,12 @@ Supports two operational modes:
        - `03:00 PM`: Vendor Inspection with `Vendor P...` tag and straight orange stripe.
        - `04:00 PM`: Key Handover with `Key Hand` tag and straight teal stripe.
        - `06:00 PM`: Dashed divider line.
-  6. `ShowingTourCard`:
+  6. `CalendarDayView` (rendered when `viewMode === 'Day'`):
+     - Dedicated single-day inspection view matching Figma reference:
+     - **Day Navigation Bar**: `<` chevron left, `• Wednesday, Oct 23` active blue capsule pill with white dot, `Today` neutral pill, and `>` chevron right.
+     - **Alert Banner**: `Elevator Modernization (All-Day)` amber warning banner with `Day 1 of 2` status pill.
+     - **ShowingTourCard**: Displays `Unit 402 – 2BR Luxury View` inspection sheet as the primary view content.
+  7. `ShowingTourCard`:
      - Drag handle pill indicator.
      - `• SHOWING TOUR` dark pill badge + Edit, More options, and Close action buttons.
      - Unit title: `Unit 402 – 2BR Luxury View` + `The Mercer Residences • West End Tower`.
