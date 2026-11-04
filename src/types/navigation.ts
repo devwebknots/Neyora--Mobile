@@ -10,6 +10,7 @@ export type AuthStackParamList = {
 
 export type MainStackParamList = {
   Home: undefined;
+  Calendar: undefined;
   Profile: { userId: string };
   Settings: undefined;
 };
@@ -17,4 +18,7 @@ export type MainStackParamList = {
 export type RootStackParamList = {
   Auth: undefined;
   Main: undefined;
+  Home: undefined;
+  Calendar: undefined;
+  Login: undefined;
 };

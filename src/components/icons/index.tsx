@@ -10,6 +10,7 @@ import {
   ImageStyle,
   StyleProp,
   StyleSheet,
+  View,
 } from 'react-native';
 
 export interface IconProps {
@@ -429,6 +430,292 @@ export const ChatTabIcon: React.FC<IconProps> = ({
     resizeMode="contain"
   />
 );
+
+export const SearchIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = '#FFFFFF',
+  style,
+}) => {
+  const circleSize = size * 0.62;
+  const stroke = Math.max(1.8, size * 0.09);
+  return (
+    <View style={[{ width: size, height: size, justifyContent: 'center', alignItems: 'center' }, style]}>
+      <View
+        style={{
+          width: circleSize,
+          height: circleSize,
+          borderRadius: circleSize / 2,
+          borderWidth: stroke,
+          borderColor: color,
+          position: 'absolute',
+          top: size * 0.1,
+          left: size * 0.1,
+        }}
+      />
+      <View
+        style={{
+          width: size * 0.36,
+          height: stroke,
+          backgroundColor: color,
+          borderRadius: stroke / 2,
+          position: 'absolute',
+          bottom: size * 0.18,
+          right: size * 0.1,
+          transform: [{ rotate: '45deg' }],
+        }}
+      />
+    </View>
+  );
+};
+
+export const ChevronLeftIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = '#FFFFFF',
+  style,
+}) => (
+  <ChevronRightIcon
+    size={size}
+    color={color}
+    style={[{ transform: [{ rotate: '180deg' }] }, style]}
+  />
+);
+
+export const SettingsIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = '#FFFFFF',
+  style,
+}) => {
+  const centerSize = size * 0.44;
+  const stroke = Math.max(1.5, size * 0.08);
+  return (
+    <View style={[{ width: size, height: size, alignItems: 'center', justifyContent: 'center' }, style]}>
+      {[0, 45, 90, 135].map((deg) => (
+        <View
+          key={deg}
+          style={{
+            position: 'absolute',
+            width: stroke,
+            height: size * 0.88,
+            backgroundColor: color,
+            borderRadius: stroke / 2,
+            transform: [{ rotate: `${deg}deg` }],
+          }}
+        />
+      ))}
+      <View
+        style={{
+          width: centerSize,
+          height: centerSize,
+          borderRadius: centerSize / 2,
+          backgroundColor: '#FFFFFF',
+          borderWidth: stroke * 1.2,
+          borderColor: color,
+        }}
+      />
+    </View>
+  );
+};
+
+export const EditIcon: React.FC<IconProps> = ({
+  size = 18,
+  color = '#64748B',
+  style,
+}) => {
+  const stroke = Math.max(1.5, size * 0.09);
+  return (
+    <View style={[{ width: size, height: size, justifyContent: 'center', alignItems: 'center' }, style]}>
+      <View
+        style={{
+          width: size * 0.32,
+          height: size * 0.74,
+          borderWidth: stroke,
+          borderColor: color,
+          borderRadius: 2,
+          transform: [{ rotate: '45deg' }],
+        }}
+      />
+    </View>
+  );
+};
+
+export const MoreVerticalIcon: React.FC<IconProps> = ({
+  size = 18,
+  color = '#64748B',
+  style,
+}) => {
+  const dot = Math.max(3, size * 0.18);
+  return (
+    <View style={[{ width: size, height: size, justifyContent: 'space-evenly', alignItems: 'center' }, style]}>
+      <View style={{ width: dot, height: dot, borderRadius: dot / 2, backgroundColor: color }} />
+      <View style={{ width: dot, height: dot, borderRadius: dot / 2, backgroundColor: color }} />
+      <View style={{ width: dot, height: dot, borderRadius: dot / 2, backgroundColor: color }} />
+    </View>
+  );
+};
+
+export const CloseIcon: React.FC<IconProps> = ({
+  size = 16,
+  color = '#64748B',
+  style,
+}) => {
+  const stroke = Math.max(1.6, size * 0.1);
+  return (
+    <View style={[{ width: size, height: size, justifyContent: 'center', alignItems: 'center' }, style]}>
+      <View
+        style={{
+          position: 'absolute',
+          width: size * 0.8,
+          height: stroke,
+          backgroundColor: color,
+          borderRadius: stroke / 2,
+          transform: [{ rotate: '45deg' }],
+        }}
+      />
+      <View
+        style={{
+          position: 'absolute',
+          width: size * 0.8,
+          height: stroke,
+          backgroundColor: color,
+          borderRadius: stroke / 2,
+          transform: [{ rotate: '-45deg' }],
+        }}
+      />
+    </View>
+  );
+};
+
+export const UploadIcon: React.FC<IconProps> = ({
+  size = 18,
+  color = '#D97706',
+  style,
+}) => {
+  const stroke = Math.max(1.8, size * 0.1);
+  return (
+    <View style={[{ width: size, height: size, alignItems: 'center', justifyContent: 'center' }, style]}>
+      <View
+        style={{
+          position: 'absolute',
+          top: size * 0.12,
+          width: stroke,
+          height: size * 0.52,
+          backgroundColor: color,
+          borderRadius: stroke / 2,
+        }}
+      />
+      <View
+        style={{
+          position: 'absolute',
+          top: size * 0.15,
+          left: size * 0.28,
+          width: stroke,
+          height: size * 0.3,
+          backgroundColor: color,
+          borderRadius: stroke / 2,
+          transform: [{ rotate: '45deg' }],
+        }}
+      />
+      <View
+        style={{
+          position: 'absolute',
+          top: size * 0.15,
+          right: size * 0.28,
+          width: stroke,
+          height: size * 0.3,
+          backgroundColor: color,
+          borderRadius: stroke / 2,
+          transform: [{ rotate: '-45deg' }],
+        }}
+      />
+      <View
+        style={{
+          position: 'absolute',
+          bottom: size * 0.12,
+          width: size * 0.78,
+          height: size * 0.3,
+          borderBottomWidth: stroke,
+          borderLeftWidth: stroke,
+          borderRightWidth: stroke,
+          borderColor: color,
+          borderBottomLeftRadius: 3,
+          borderBottomRightRadius: 3,
+        }}
+      />
+    </View>
+  );
+};
+
+export const BriefcaseIcon: React.FC<IconProps> = ({
+  size = 18,
+  color = '#FFFFFF',
+  style,
+}) => {
+  const stroke = Math.max(1.5, size * 0.09);
+  return (
+    <View style={[{ width: size, height: size, alignItems: 'center', justifyContent: 'center' }, style]}>
+      <View
+        style={{
+          width: size * 0.4,
+          height: size * 0.2,
+          borderTopWidth: stroke,
+          borderLeftWidth: stroke,
+          borderRightWidth: stroke,
+          borderColor: color,
+          borderTopLeftRadius: 3,
+          borderTopRightRadius: 3,
+          marginBottom: -1,
+        }}
+      />
+      <View
+        style={{
+          width: size * 0.85,
+          height: size * 0.55,
+          borderWidth: stroke,
+          borderColor: color,
+          borderRadius: 3,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <View style={{ width: '100%', height: stroke * 0.7, backgroundColor: color }} />
+      </View>
+    </View>
+  );
+};
+
+export const RefreshIcon: React.FC<IconProps> = ({
+  size = 14,
+  color = '#94A3B8',
+  style,
+}) => {
+  const stroke = Math.max(1.4, size * 0.1);
+  return (
+    <View style={[{ width: size, height: size, alignItems: 'center', justifyContent: 'center' }, style]}>
+      <View
+        style={{
+          width: size * 0.75,
+          height: size * 0.75,
+          borderRadius: (size * 0.75) / 2,
+          borderWidth: stroke,
+          borderTopColor: 'transparent',
+          borderColor: color,
+        }}
+      />
+      <View
+        style={{
+          position: 'absolute',
+          top: size * 0.08,
+          right: size * 0.08,
+          width: stroke * 2.2,
+          height: stroke * 2.2,
+          borderTopWidth: stroke,
+          borderRightWidth: stroke,
+          borderColor: color,
+        }}
+      />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   icon: {

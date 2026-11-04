@@ -3,6 +3,7 @@
  * Recreates the exact persistent navigation bar with HOME (active),
  * CALENDAR (with orange status dot), BOOKINGS (badge count 4),
  * and MESSAGES (badge count 2).
+ * Also supports calendar screen variant: CALENDAR (active), BOOKINGS, MESSAGES, SETTINGS.
  */
 
 import React from 'react';
@@ -19,19 +20,22 @@ import {
   CalendarIcon,
   ChatTabIcon,
   HomeIcon,
+  SettingsIcon,
 } from '@/components/icons';
 import { moderateScale, scaleFont } from '@/utils/responsive';
 
-export type BottomNavTab = 'home' | 'calendar' | 'bookings' | 'messages';
+export type BottomNavTab = 'home' | 'calendar' | 'bookings' | 'messages' | 'settings';
 
 export interface BottomNavBarProps {
   activeTab?: BottomNavTab;
   onSelectTab?: (tab: BottomNavTab) => void;
+  variant?: 'home' | 'calendar';
 }
 
 export const BottomNavBar: React.FC<BottomNavBarProps> = ({
   activeTab = 'home',
   onSelectTab,
+  variant = 'home',
 }) => {
   const insets = useSafeAreaInsets();
   const inactiveColor = colors.textMuted; // #94A3B8 - softer visual weight
@@ -43,30 +47,32 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
         { paddingBottom: Math.max(insets.bottom, moderateScale(10)) },
       ]}
     >
-      {/* 1. HOME (Active) */}
-      <TouchableOpacity
-        style={styles.tabItem}
-        onPress={() => onSelectTab?.('home')}
-        activeOpacity={0.7}
-        accessibilityRole="tab"
-        accessibilityState={{ selected: activeTab === 'home' }}
-        accessibilityLabel="Home Tab"
-      >
-        <View style={styles.iconContainer}>
-          <HomeIcon
-            size={moderateScale(22)}
-            color={activeTab === 'home' ? colors.primary : inactiveColor}
-          />
-        </View>
-        <Text
-          style={[
-            styles.tabLabel,
-            activeTab === 'home' ? styles.tabLabelActive : styles.tabLabelInactive,
-          ]}
+      {/* 1. HOME (only shown when variant is 'home') */}
+      {variant === 'home' && (
+        <TouchableOpacity
+          style={styles.tabItem}
+          onPress={() => onSelectTab?.('home')}
+          activeOpacity={0.7}
+          accessibilityRole="tab"
+          accessibilityState={{ selected: activeTab === 'home' }}
+          accessibilityLabel="Home Tab"
         >
-          HOME
-        </Text>
-      </TouchableOpacity>
+          <View style={styles.iconContainer}>
+            <HomeIcon
+              size={moderateScale(22)}
+              color={activeTab === 'home' ? colors.primary : inactiveColor}
+            />
+          </View>
+          <Text
+            style={[
+              styles.tabLabel,
+              activeTab === 'home' ? styles.tabLabelActive : styles.tabLabelInactive,
+            ]}
+          >
+            HOME
+          </Text>
+        </TouchableOpacity>
+      )}
 
       {/* 2. CALENDAR (with orange dot) */}
       <TouchableOpacity
@@ -151,6 +157,33 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
           MESSAGES
         </Text>
       </TouchableOpacity>
+
+      {/* 5. SETTINGS (only shown when variant is 'calendar') */}
+      {variant === 'calendar' && (
+        <TouchableOpacity
+          style={styles.tabItem}
+          onPress={() => onSelectTab?.('settings')}
+          activeOpacity={0.7}
+          accessibilityRole="tab"
+          accessibilityState={{ selected: activeTab === 'settings' }}
+          accessibilityLabel="Settings Tab"
+        >
+          <View style={styles.iconContainer}>
+            <SettingsIcon
+              size={moderateScale(22)}
+              color={activeTab === 'settings' ? colors.primary : inactiveColor}
+            />
+          </View>
+          <Text
+            style={[
+              styles.tabLabel,
+              activeTab === 'settings' ? styles.tabLabelActive : styles.tabLabelInactive,
+            ]}
+          >
+            SETTINGS
+          </Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

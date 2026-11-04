@@ -14,6 +14,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import { navigate } from '@/navigation/navigationRef';
 import { moderateScale } from '@/utils/responsive';
 import { colors } from '@/config/theme';
 import {
@@ -28,7 +29,11 @@ import {
   ScheduleSection,
 } from '../components';
 
-export const HomeScreen: React.FC = () => {
+export interface HomeScreenProps {
+  navigation?: any;
+}
+
+export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation: propNavigation }) => {
   const [activeTab, setActiveTab] = useState<BottomNavTab>('home');
   const [refreshing, setRefreshing] = useState<boolean>(false);
 
@@ -41,6 +46,14 @@ export const HomeScreen: React.FC = () => {
 
   const handleAction = (title: string, message?: string) => {
     Alert.alert(title, message ?? 'Action triggered from Home Screen');
+  };
+
+  const handleNavigate = (route: 'Calendar' | 'Home') => {
+    if (propNavigation?.navigate) {
+      propNavigation.navigate(route);
+    } else {
+      navigate(route as any);
+    }
   };
 
   React.useEffect(() => {
@@ -89,7 +102,7 @@ export const HomeScreen: React.FC = () => {
         {/* 3. Quick Action Bar */}
         <QuickActionBar
           onNewEventPress={() => handleAction('New Event', 'Create operational event or booking.')}
-          onSchedulePress={() => handleAction('Schedule', 'View operational schedule.')}
+          onSchedulePress={() => handleNavigate('Calendar')}
           onAvailabilityPress={() => handleAction('Avaliability', 'Check unit and team availability.')}
           onShareLinkPress={() => handleAction('Share Link', 'Operational dispatch link copied.')}
         />
@@ -106,7 +119,7 @@ export const HomeScreen: React.FC = () => {
         {/* 5. Today's Schedule Section */}
         <ScheduleSection
           eventsCount={3}
-          onViewCalendar={() => handleAction('Calendar', 'Navigating to full operational calendar.')}
+          onViewCalendar={() => handleNavigate('Calendar')}
           onEventPress={(_id) => handleAction('Event Selected', `Opening details for event #${_id}`)}
           onMessagesFabPress={() => handleAction('Messages', 'Opening instant communication channel.')}
         />
@@ -129,7 +142,12 @@ export const HomeScreen: React.FC = () => {
       {/* 7. Persistent Bottom Navigation Bar */}
       <BottomNavBar
         activeTab={activeTab}
-        onSelectTab={(tab) => setActiveTab(tab)}
+        onSelectTab={(tab) => {
+          setActiveTab(tab);
+          if (tab === 'calendar') {
+            handleNavigate('Calendar');
+          }
+        }}
       />
 
       {/* 8. Draggable Floating Messages Button */}
