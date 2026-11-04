@@ -8,6 +8,7 @@
 import React from 'react';
 import {
   Image,
+  ImageSourcePropType,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -27,6 +28,7 @@ import {
 import { moderateScale, scaleFont } from '@/utils/responsive';
 
 export interface ShowingTourCardProps {
+  imageSource?: ImageSourcePropType;
   unitTitle?: string;
   propertySubtitle?: string;
   pricePerMonth?: string;
@@ -52,6 +54,7 @@ export interface ShowingTourCardProps {
 }
 
 export const ShowingTourCard: React.FC<ShowingTourCardProps> = ({
+  imageSource = require('@/assets/images/unit_402.jpg'),
   unitTitle = 'Unit 402 – 2BR Luxury View',
   propertySubtitle = 'The Mercer Residences • West End Tower',
   pricePerMonth = '$4,200/mo',
@@ -94,6 +97,7 @@ export const ShowingTourCard: React.FC<ShowingTourCardProps> = ({
             style={styles.iconButton}
             onPress={onEditPress}
             activeOpacity={0.7}
+            hitSlop={{ top: 10, bottom: 10, left: 6, right: 6 }}
             accessibilityLabel="Edit Showing Tour"
           >
             <EditIcon size={moderateScale(15)} color="#94A3B8" />
@@ -103,6 +107,7 @@ export const ShowingTourCard: React.FC<ShowingTourCardProps> = ({
             style={styles.iconButton}
             onPress={onMorePress}
             activeOpacity={0.7}
+            hitSlop={{ top: 10, bottom: 10, left: 6, right: 6 }}
             accessibilityLabel="More Options"
           >
             <MoreVerticalIcon size={moderateScale(15)} color="#94A3B8" />
@@ -112,9 +117,10 @@ export const ShowingTourCard: React.FC<ShowingTourCardProps> = ({
             style={styles.iconButton}
             onPress={onClosePress}
             activeOpacity={0.7}
+            hitSlop={{ top: 10, bottom: 10, left: 6, right: 6 }}
             accessibilityLabel="Close"
           >
-            <CloseIcon size={moderateScale(14)} color="#94A3B8" />
+            <CloseIcon size={moderateScale(13)} color="#94A3B8" />
           </TouchableOpacity>
         </View>
       </View>
@@ -126,7 +132,7 @@ export const ShowingTourCard: React.FC<ShowingTourCardProps> = ({
       {/* Apartment Photo with Scrim and Availability Tag */}
       <View style={styles.imageContainer}>
         <Image
-          source={require('@/assets/images/mercer_residence.png')}
+          source={imageSource}
           style={styles.propertyImage}
           resizeMode="cover"
         />
@@ -314,11 +320,9 @@ const styles = StyleSheet.create({
   topActionsRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: moderateScale(8),
+    gap: moderateScale(12),
   },
   iconButton: {
-    width: moderateScale(28),
-    height: moderateScale(28),
     alignItems: 'center',
     justifyContent: 'center',
   },

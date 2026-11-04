@@ -51,4 +51,16 @@ describe('Calendar Screen Architecture & Specifications', () => {
     expect(root.findByProps({ children: 'Elevator Modernization (All-Day)' })).toBeDefined();
     expect(root.findByProps({ children: 'Unit 402 – Showing Tour' })).toBeDefined();
   });
+
+  test('renders ShowingTourCard with unit 402 image source cleanly', async () => {
+    const { ShowingTourCard } = require('../src/features/calendar/components/ShowingTourCard');
+    let tree: ReactTestRenderer.ReactTestRenderer | undefined;
+    await ReactTestRenderer.act(() => {
+      tree = ReactTestRenderer.create(<ShowingTourCard />);
+    });
+    const root = tree!.root;
+    const image = root.findByProps({ resizeMode: 'cover' });
+    expect(image.props.source).toBeDefined();
+    expect(root.findByProps({ children: 'Unit 402 – 2BR Luxury View' })).toBeDefined();
+  });
 });

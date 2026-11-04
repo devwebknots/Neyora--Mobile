@@ -169,7 +169,7 @@ Supports two operational modes:
      - Drag handle pill indicator.
      - `• SHOWING TOUR` dark pill badge + Edit, More options, and Close action buttons.
      - Unit title: `Unit 402 – 2BR Luxury View` + `The Mercer Residences • West End Tower`.
-     - Featured apartment photo preview with `Available Nov 1` badge and `Unit 402 • $4,200/mo` dark scrim.
+     - Featured apartment photo preview (`unit_402.jpg`, curved boucle sofa overlooking skyline) with `Available Nov 1` badge and `Unit 402 • $4,200/mo` dark scrim.
      - Schedule window: `Wednesday, Oct 23, 2024 • 10:00 AM – 10:45 AM (45 mins)` with `15 min travel buffer enforced`.
      - Prospect Details: `Marcus Reed` (`marcus.reed@example.com`, `+1 555-019-2834`) with quick SMS/Chat button.
      - 2 side-by-side columns: Assigned Agent (`Elena Vance`, `EV`) and Unit Specs (`2 Bed • 2 Bath`, `1,180 Sq Ft`).

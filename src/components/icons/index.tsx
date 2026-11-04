@@ -549,36 +549,48 @@ export const FilterIcon: React.FC<IconProps> = ({
   );
 };
 
+const FIGMA_EDIT_ICON =
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABGUlEQVR4nO2XYQ6DMAhGe3STHcxTeB4WjVlc1lKBj5ZtfInZP3hvxdaWkslkMplfDBE9iGjdf2eziHPCX/M9EhX4PetsrltpwOMEiGiBFKrXbsFjRuhaDUL8Xnsc/BnYSnBj4wV/CHAPAB6z6zDL2k0E+MUiwK2EOzxCYCp8Q4Cd+zvvwDD4loCx3jj4AhYYDl+AAu6fB0xjs4D7CdtpbhJwP2FvAKgFJDPv9oGoFRDCvxJCQPrPa1fYRUC6VYYS0OzzYQS0h1QkgU0KH0ZACx9CoAK/SQ6oqQI1eGT9EQIm+AgCmwW+Vx8Sy41M8AwV8E4K1CSGBQ7fkUDNvS88I6G9H38I4GnbzSFNp8BfmkNeNLdrZCbzh3kCrg6HzROuUYMAAAAASUVORK5CYII=';
+
 export const EditIcon: React.FC<IconProps> = ({
   size = 18,
   color = '#64748B',
   style,
-}) => {
-  const stroke = Math.max(1.5, size * 0.09);
-  return (
-    <View style={[{ width: size, height: size, justifyContent: 'center', alignItems: 'center' }, style]}>
-      <View
-        style={{
-          width: size * 0.32,
-          height: size * 0.74,
-          borderWidth: stroke,
-          borderColor: color,
-          borderRadius: 2,
-          transform: [{ rotate: '45deg' }],
-        }}
-      />
-    </View>
-  );
-};
+}) => (
+  <Image
+    source={{ uri: FIGMA_EDIT_ICON }}
+    style={[
+      styles.icon,
+      {
+        width: size,
+        height: size,
+        tintColor: color,
+      },
+      style,
+    ]}
+    resizeMode="contain"
+  />
+);
 
 export const MoreVerticalIcon: React.FC<IconProps> = ({
-  size = 18,
+  size = 16,
   color = '#64748B',
   style,
 }) => {
-  const dot = Math.max(3, size * 0.18);
+  const dot = Math.max(2.5, size * 0.16);
   return (
-    <View style={[{ width: size, height: size, justifyContent: 'space-evenly', alignItems: 'center' }, style]}>
+    <View
+      style={[
+        {
+          width: dot + 2,
+          height: size,
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          paddingVertical: 1,
+        },
+        style,
+      ]}
+    >
       <View style={{ width: dot, height: dot, borderRadius: dot / 2, backgroundColor: color }} />
       <View style={{ width: dot, height: dot, borderRadius: dot / 2, backgroundColor: color }} />
       <View style={{ width: dot, height: dot, borderRadius: dot / 2, backgroundColor: color }} />
@@ -587,17 +599,18 @@ export const MoreVerticalIcon: React.FC<IconProps> = ({
 };
 
 export const CloseIcon: React.FC<IconProps> = ({
-  size = 16,
+  size = 14,
   color = '#64748B',
   style,
 }) => {
-  const stroke = Math.max(1.6, size * 0.1);
+  const stroke = Math.max(1.8, size * 0.12);
+  const arm = size * 0.88;
   return (
     <View style={[{ width: size, height: size, justifyContent: 'center', alignItems: 'center' }, style]}>
       <View
         style={{
           position: 'absolute',
-          width: size * 0.8,
+          width: arm,
           height: stroke,
           backgroundColor: color,
           borderRadius: stroke / 2,
@@ -607,7 +620,7 @@ export const CloseIcon: React.FC<IconProps> = ({
       <View
         style={{
           position: 'absolute',
-          width: size * 0.8,
+          width: arm,
           height: stroke,
           backgroundColor: color,
           borderRadius: stroke / 2,
