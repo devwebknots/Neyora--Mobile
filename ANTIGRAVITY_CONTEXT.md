@@ -29,7 +29,8 @@
   │   ├── features/               # Feature-based modular domains
   │   │   ├── auth/               # Authentication screens & state
   │   │   ├── home/               # Home operational dashboard & section components
-  │   │   └── calendar/           # Calendar, month view, capacity & showing sheets
+  │   │   ├── calendar/           # Calendar, month view, capacity & showing sheets
+  │   │   └── splash/             # Splash screen, ambient background & logo badge
   │   ├── navigation/             # RootNavigator.tsx, navigationRef.ts, types.ts
   │   ├── store/                  # Redux root reducer and typed hooks
   │   ├── types/                  # Global TypeScript type definitions
@@ -82,8 +83,9 @@ The application strictly uses **2 font families** (Poppins was deprecated and re
 1. **Playfair Display** (`typography.fontFamily.heading`):
    - `PlayfairDisplay-Regular`: Used for `"NEYORA"` monogram, greeting headline `"Good morning,\nAlex"`.
    - `PlayfairDisplay-Medium` / `SemiBold`: Section titles (`"Calendar"`, `"Needs Your Attention"`, `"Today's Schedule"`, `"Property Activity"`, `"Unit 402 – 2BR Luxury View"`).
+   - `PlayfairDisplay-Bold`: Signature splash screen brand title `"Neyora"`.
 2. **Inter** (`typography.fontFamily.body`):
-   - `Inter-Regular`: Body text, dates, addresses, subtitles, descriptions.
+   - `Inter-Regular`: Body text, dates, addresses, subtitles, descriptions, splash tagline `"Mange your time ,effortlessly"`.
    - `Inter-Medium`: Links (`"View All"`, `"View Calendar"`), badges (`"LIVE"`, `"82% BOOKED"`), segment tabs, inactive bottom tabs.
    - `Inter-SemiBold` / `Bold`: Card titles, prospect names (`"Marcus Reed"`), button text, price labels, active bottom tabs.
 
@@ -141,7 +143,7 @@ Supports two operational modes:
      - Kicker: `PROPERTY SHOWINGS & TENANT INSPECTIONS`
      - Title: `Calendar` (Playfair Display)
      - Action buttons: `↑ ICS` and `+ EVENT`
-     - View mode switcher: `Month`, `Week`, `Day`, `Agenda` (dynamically switches between Month grid view and Week timeline format).
+     - View mode switcher: `Month`, `Week`, `Day`, `Agenda` (dynamically switches between Month grid view, Week timeline, and Day inspection format).
   3. `CalendarMonthCard` (rendered when `viewMode === 'Month'`):
      - October 2026 header banner using high-fidelity Figma botanical asset (`calendar_month_header.png`) with sunlit wall, year, month dropdown, `< >` navigation pill, calendar picker shortcut, and interactive touch target overlays.
      - 5-week month grid with exact dot indicators per day.
@@ -181,9 +183,32 @@ Supports two operational modes:
      - Tour Notes: `Prospect requested key focus on balcony acoustics, parking bay access, and fiber optic pre-wiring.`
      - Primary button: `Open Showing Pack` (Linear gradient with briefcase icon).
      - Secondary buttons: `Reschedule` and `Cancel Tour`.
-  6. `BottomNavBar`: Persistent bottom navigation with `variant="calendar"`.
+  8. `BottomNavBar`: Persistent bottom navigation with `variant="calendar"`.
 
-### 3. Navigation Flow
+### 3. Splash Screen (`src/features/splash`)
+- **Role**: Initial cinematic branding and entrance screen.
+- **Visual Design**:
+  - **Ambient Background** (`AmbientBackground.tsx`):
+    - Renders the authentic clean deep space navy artwork (`splash_bg.jpg`) featuring sweeping luminous electric-blue wave streaks and an upper starlight burst.
+    - Continuous multi-axis hardware-accelerated ambient motion (`useNativeDriver: true`): subtle pan/drift (`translateX`: -14px to +14px, `translateY`: -18px to +16px), slow breathing zoom (`scale`: 1.03 to 1.08), soft wave luminescence bloom (`0.92` to `1.0`), and pulsing focal starlight flare glint (`0.45` to `0.95`).
+    - Uses local binary asset references loaded via Metro bundler (`splashAssets.ts`) ensuring 100% crash-free rendering and zero base64 decoding overhead.
+    - Test-safe: loops are gracefully bypassed in test environments (`process.env.NODE_ENV === "test"`).
+  - **Logo Badge** (`LogoBadge.tsx`):
+    - Signature squircle card (`132dp` x `132dp`, `borderRadius: 38dp`, background `#060E22`, ice-blue luminous border `rgba(147, 197, 253, 0.42)`, glowing shadow `#0084FF`).
+    - Authentic stylized `"Ni"` monogram (`splash_monogram.png`) with white stroke and cyan accent dot (`#0084FF`).
+    - Shimmering 4-point diamond star sparkle flare (`splash_sparkle.png`) at top-right corner with gentle breathing pulse and rotation shimmer.
+  - **Typography**:
+    - Title: `"Neyora"` (`Playfair Display Bold`, `46pt`, `#FFFFFF`, subtle blue text-shadow).
+    - Tagline: `"Mange your time ,effortlessly"` (`Inter Regular`, `16pt`, `rgba(255, 255, 255, 0.82)`).
+  - **Entrance & Navigation**:
+    - Staggered entrance animation (logo scale `0.92 ➔ 1.0`, text glide `18 ➔ 0`).
+    - Automatic route transition to `Home` after display duration (default `2800ms`).
+    - Full screen interactive tap-to-skip.
+
+### 4. Navigation Flow
+- **Splash ➔ Home**:
+  - Automatically after `duration = 2800ms`.
+  - Instantly on tap anywhere on the splash screen.
 - **Home ➔ Calendar**:
   - Tapping **View Calendar** in `ScheduleSection`.
   - Tapping **Schedule** in `QuickActionBar`.
