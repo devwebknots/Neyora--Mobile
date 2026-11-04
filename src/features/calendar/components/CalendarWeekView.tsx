@@ -20,6 +20,7 @@ import {
   UserIcon,
   WarningTriangleIcon,
 } from '@/components/icons';
+import { LinearGradient } from '@/components';
 import { moderateScale, scaleFont } from '@/utils/responsive';
 
 export interface WeekDay {
@@ -212,32 +213,42 @@ export const CalendarWeekView: React.FC<CalendarWeekViewProps> = ({
         <View style={styles.timelineRow}>
           <Text style={[styles.timeLabel, styles.timeLabelActive]}>10:00 AM</Text>
           <TouchableOpacity
-            style={[styles.selectedEventCard, selectedEventId === 'unit402' && styles.selectedEventCardActive]}
+            style={styles.selectedEventCardTouchable}
             onPress={() => handleEventClick('unit402')}
             activeOpacity={0.9}
           >
-            <View style={styles.selectedHeaderRow}>
-              <View style={styles.selectedTitleGroup}>
-                <View style={styles.liveGreenDot} />
-                <Text style={styles.selectedTitleText}>Unit 402 – Showing Tour</Text>
+            <LinearGradient
+              colors={['#4075E9', '#94B0EA']}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={[
+                styles.selectedEventCard,
+                selectedEventId === 'unit402' && styles.selectedEventCardActive,
+              ]}
+            >
+              <View style={styles.selectedHeaderRow}>
+                <View style={styles.selectedTitleGroup}>
+                  <View style={styles.liveGreenDot} />
+                  <Text style={styles.selectedTitleText}>Unit 402 – Showing Tour</Text>
+                </View>
+                <View style={styles.selectedPill}>
+                  <Text style={styles.selectedPillText}>Selected</Text>
+                </View>
               </View>
-              <View style={styles.selectedPill}>
-                <Text style={styles.selectedPillText}>Selected</Text>
+
+              <Text style={styles.selectedSubtitleText}>
+                The Mercer Residences • Marcus Reed
+              </Text>
+
+              <View style={styles.selectedDivider} />
+
+              <View style={styles.selectedBottomRow}>
+                <Text style={styles.selectedTimeText}>10:00 – 10:45 AM</Text>
+                <View style={styles.bufferPill}>
+                  <Text style={styles.bufferPillText}>+15m travel buffer</Text>
+                </View>
               </View>
-            </View>
-
-            <Text style={styles.selectedSubtitleText}>
-              The Mercer Residences • Marcus Reed
-            </Text>
-
-            <View style={styles.selectedDivider} />
-
-            <View style={styles.selectedBottomRow}>
-              <Text style={styles.selectedTimeText}>10:00 – 10:45 AM</Text>
-              <View style={styles.bufferPill}>
-                <Text style={styles.bufferPillText}>+15m travel buffer</Text>
-              </View>
-            </View>
+            </LinearGradient>
           </TouchableOpacity>
         </View>
 
@@ -653,20 +664,22 @@ const styles = StyleSheet.create({
     color: '#64748B',
     marginLeft: moderateScale(4),
   },
-  selectedEventCard: {
+  selectedEventCardTouchable: {
     flex: 1,
-    backgroundColor: '#2563EB',
-    borderRadius: moderateScale(12),
-    padding: moderateScale(12),
-    shadowColor: '#2563EB',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.18,
-    shadowRadius: 5,
+  },
+  selectedEventCard: {
+    borderRadius: moderateScale(14),
+    paddingHorizontal: moderateScale(12),
+    paddingVertical: moderateScale(11),
+    shadowColor: '#4075E9',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.22,
+    shadowRadius: 6,
     elevation: 3,
   },
   selectedEventCardActive: {
     borderWidth: 1,
-    borderColor: '#1D4ED8',
+    borderColor: 'rgba(255, 255, 255, 0.4)',
   },
   selectedHeaderRow: {
     flexDirection: 'row',
@@ -692,28 +705,26 @@ const styles = StyleSheet.create({
     fontWeight: typography.fontWeight.bold,
   },
   selectedPill: {
-    backgroundColor: '#1D4ED8',
-    paddingHorizontal: moderateScale(7),
-    paddingVertical: moderateScale(2),
-    borderRadius: moderateScale(5),
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: '#315EDB',
+    paddingHorizontal: moderateScale(8),
+    paddingVertical: moderateScale(3),
+    borderRadius: moderateScale(6),
   },
   selectedPillText: {
-    fontFamily: typography.fontFamily.body.medium,
+    fontFamily: typography.fontFamily.body.bold,
     fontSize: scaleFont(10),
     color: colors.white,
-    fontWeight: typography.fontWeight.medium,
+    fontWeight: typography.fontWeight.bold,
   },
   selectedSubtitleText: {
     fontFamily: typography.fontFamily.body.regular,
     fontSize: scaleFont(11),
-    color: 'rgba(255, 255, 255, 0.85)',
+    color: 'rgba(255, 255, 255, 0.9)',
     marginTop: moderateScale(3),
   },
   selectedDivider: {
     height: 1,
-    backgroundColor: 'rgba(255, 255, 255, 0.18)',
+    backgroundColor: 'rgba(255, 255, 255, 0.22)',
     marginVertical: moderateScale(8),
   },
   selectedBottomRow: {
@@ -728,10 +739,10 @@ const styles = StyleSheet.create({
     fontWeight: typography.fontWeight.medium,
   },
   bufferPill: {
-    backgroundColor: 'rgba(255, 255, 255, 0.18)',
-    paddingHorizontal: moderateScale(6),
-    paddingVertical: moderateScale(2),
-    borderRadius: moderateScale(5),
+    backgroundColor: '#436EDE',
+    paddingHorizontal: moderateScale(8),
+    paddingVertical: moderateScale(3),
+    borderRadius: moderateScale(6),
   },
   bufferPillText: {
     fontFamily: typography.fontFamily.body.medium,

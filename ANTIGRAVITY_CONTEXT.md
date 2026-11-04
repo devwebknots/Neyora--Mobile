@@ -74,6 +74,7 @@ Defined in `src/config/theme.ts`:
 Managed via `src/components/LinearGradient.tsx`:
 - **Header Gradient**: `#032B57` → `#518EF9` (Greeting top banner)
 - **Button Gradient**: `#03264C` → `#0659B2` (CTA buttons: `"EVENT"`, `"Confirm"`, `"Open Showing Pack"`)
+- **Selected Card Gradient**: `#4075E9` → `#94B0EA` (Light blue horizontal gradient for active event card in Calendar Week view)
 - **Image Dark Scrim Overlay**: `transparent` → `rgba(0, 0, 0, 0.8)` (Property photo text readability)
 
 ### 3. Typography & Fonts
