@@ -191,18 +191,6 @@ const fontBodyBold = Platform.select({
   default: 'Inter-Bold',
 });
 
-const fontPoppinsRegular = Platform.select({
-  ios: 'Poppins-Regular',
-  android: 'Poppins-Regular',
-  default: 'Poppins-Regular',
-});
-
-const fontPoppinsMedium = Platform.select({
-  ios: 'Poppins-Medium',
-  android: 'Poppins-Medium',
-  default: 'Poppins-Medium',
-});
-
 export const typography = {
   fontFamily: {
     heading: {
@@ -216,10 +204,6 @@ export const typography = {
       medium: fontBodyMedium,
       semiBold: fontBodySemiBold,
       bold: fontBodyBold,
-    },
-    poppins: {
-      regular: fontPoppinsRegular,
-      medium: fontPoppinsMedium,
     },
   },
   fontSize: {
@@ -347,7 +331,7 @@ export const typographyPresets: Record<string, TextStyle> = {
     letterSpacing: 0.1,
   },
   floatingButtonLabel: {
-    fontFamily: fontPoppinsMedium,
+    fontFamily: typography.fontFamily.body.medium,
     fontSize: 6,
     lineHeight: 16.5,
     fontWeight: typography.fontWeight.medium,

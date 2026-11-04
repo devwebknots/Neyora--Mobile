@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: spacing.screenHorizontal,
     minHeight: 74,
-    marginTop: moderateScale(18),
+    marginTop: moderateScale(24),
     borderRadius: 20,
     paddingHorizontal: 16,
     paddingVertical: 12,
