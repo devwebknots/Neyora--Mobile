@@ -153,16 +153,17 @@ Supports two operational modes:
      - Slot counts: `7 of 9 Showing slots filled` and `3 Left`.
      - Synchronization footer: `Synced with Google & Outlook 4 mins ago`.
   5. `CalendarWeekView` (rendered when `viewMode === 'Week'`):
-     - Header row with `< >` navigation pill, `Oct 20–26, 2024` date range, `W43` week badge, and `Filters (2)` action button.
-     - 7-day row (`Sun 20` – `Sat 26`) with `Wed 23` highlighted in an active blue badge (`#2563EB`).
-     - `Elevator Modernization (All-Day)` warning banner with `Day 1 of 2` pill.
-     - Time-slotted schedule cards from 09:00 AM to 06:00 PM:
-       - `09:00 AM`: Unit 104 Walkthrough (Sarah Li) with blue left stripe.
-       - `10:00 AM`: Active selected card (`Unit 402 – Showing Tour`) in royal blue with `Selected` tag and `+15m travel buffer`.
-       - HVAC Room Unit 3B with `Done` tag and green stripe.
-       - `01:00 PM`: Virtual Consultation with `Meet` tag and purple stripe.
-       - `03:00 PM`: Vendor Inspection with `Vendor P...` tag and orange stripe.
-       - `04:00 PM`: Key Handover with `Key Hand` tag and teal stripe.
+     - Separated modular sections matching Figma layout: parent container has **no border and no shadows**.
+     - **Section 1 (Header Card, 348 × 48 Hug)**: Dedicated card with `< >` navigation pill, `Oct 20–26, 2024` date range, `W43` week badge, and `Filters (2)` action button.
+     - **Section 2 (Days Row, 348 × 48 Hug)**: Clean 7-day row (`Sun 20` – `Sat 26`) with `Wed 23` highlighted in an active blue badge (`#2563EB`).
+     - **Section 3 (Alert Banner, 348 × 50 Hug)**: `Elevator Modernization (All-Day)` warning banner card with `Day 1 of 2` pill.
+     - **Section 4 (Timeline Grid)**: Time-slotted schedule cards from 09:00 AM to 06:00 PM sitting cleanly on the screen background:
+       - `09:00 AM`: Unit 104 Walkthrough (Sarah Li) with straight blue left stripe.
+       - `10:00 AM`: Active selected card (`Unit 402 – Showing Tour`) with soft horizontal light gradient (`#4075E9` → `#94B0EA`), `Selected` tag, and `+15m travel buffer`.
+       - HVAC Room Unit 3B with `Done` tag and straight green stripe.
+       - `01:00 PM`: Virtual Consultation with `Meet` tag and straight purple stripe.
+       - `03:00 PM`: Vendor Inspection with `Vendor P...` tag and straight orange stripe.
+       - `04:00 PM`: Key Handover with `Key Hand` tag and straight teal stripe.
        - `06:00 PM`: Dashed divider line.
   6. `ShowingTourCard`:
      - Drag handle pill indicator.

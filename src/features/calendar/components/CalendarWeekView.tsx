@@ -77,9 +77,9 @@ export const CalendarWeekView: React.FC<CalendarWeekViewProps> = ({
   };
 
   return (
-    <View style={styles.cardContainer}>
-      {/* 1. Header Row: < > Nav, Date Range with W43 Badge, Filters Button */}
-      <View style={styles.headerRow}>
+    <View style={styles.mainContainer}>
+      {/* 1. Header Card: < > Nav, Date Range with W43 Badge, Filters Button */}
+      <View style={styles.headerCard}>
         {/* Navigation Arrows Pill (< >) */}
         <View style={styles.navPill}>
           <TouchableOpacity
@@ -341,7 +341,7 @@ export const CalendarWeekView: React.FC<CalendarWeekViewProps> = ({
 
         {/* Slot: 06:00 PM (Dashed Divider) */}
         <View style={styles.timelineRowLast}>
-          <Text style={styles.timeLabel}>06:00 PM</Text>
+          <Text style={[styles.timeLabel, styles.timeLabelLast]}>06:00 PM</Text>
           <View style={styles.dashedLine} />
         </View>
       </View>
@@ -350,20 +350,21 @@ export const CalendarWeekView: React.FC<CalendarWeekViewProps> = ({
 };
 
 const styles = StyleSheet.create({
-  cardContainer: {
+  mainContainer: {
     marginHorizontal: 20,
     marginTop: moderateScale(16),
-    backgroundColor: colors.white,
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
-    borderRadius: moderateScale(20),
-    padding: moderateScale(16),
-    ...shadows.sm,
   },
-  headerRow: {
+  headerCard: {
+    minHeight: moderateScale(48),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    backgroundColor: colors.white,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    borderRadius: moderateScale(12),
+    paddingHorizontal: moderateScale(12),
+    paddingVertical: moderateScale(6),
   },
   navPill: {
     flexDirection: 'row',
@@ -495,6 +496,7 @@ const styles = StyleSheet.create({
     marginTop: moderateScale(1),
   },
   alertBanner: {
+    minHeight: moderateScale(50),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -502,9 +504,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#FEF08A',
     borderRadius: moderateScale(12),
-    paddingHorizontal: moderateScale(12),
-    paddingVertical: moderateScale(8.5),
-    marginTop: moderateScale(14),
+    paddingHorizontal: moderateScale(14),
+    paddingVertical: moderateScale(10),
+    marginTop: moderateScale(16),
   },
   alertLeftRow: {
     flexDirection: 'row',
@@ -533,12 +535,12 @@ const styles = StyleSheet.create({
     fontWeight: typography.fontWeight.medium,
   },
   timelineContainer: {
-    marginTop: moderateScale(14),
+    marginTop: moderateScale(20),
     gap: moderateScale(10),
   },
   timelineRow: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   timelineRowLast: {
     flexDirection: 'row',
@@ -551,11 +553,15 @@ const styles = StyleSheet.create({
     fontSize: scaleFont(11),
     color: '#94A3B8',
     fontWeight: typography.fontWeight.medium,
+    paddingTop: moderateScale(10),
   },
   timeLabelActive: {
     fontFamily: typography.fontFamily.body.bold,
     color: colors.primary,
     fontWeight: typography.fontWeight.bold,
+  },
+  timeLabelLast: {
+    paddingTop: 0,
   },
   emptyTimeLabel: {
     width: moderateScale(68),
