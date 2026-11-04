@@ -43,8 +43,8 @@ const isTestEnv = typeof process !== 'undefined' && process.env?.NODE_ENV === 't
 export const SplashScreen: React.FC<SplashScreenProps> = ({
   navigation,
   duration = 2800,
-  autoNavigate = false, // Disabled for testing: keeps splash screen on screen
-  enableTapToSkip = false, // Disabled for testing: prevents accidental dismissal
+  autoNavigate = true,
+  enableTapToSkip = true,
   onFinish,
   testID = 'splash-screen',
 }) => {

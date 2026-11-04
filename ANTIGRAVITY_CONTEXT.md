@@ -189,14 +189,15 @@ Supports two operational modes:
 - **Role**: Initial cinematic branding and entrance screen.
 - **Visual Design**:
   - **Ambient Background** (`AmbientBackground.tsx`):
-    - Renders the authentic clean deep space navy artwork (`splash_bg.jpg`) featuring sweeping luminous electric-blue wave streaks and an upper starlight burst.
-    - Continuous multi-axis hardware-accelerated ambient motion (`useNativeDriver: true`): subtle pan/drift (`translateX`: -14px to +14px, `translateY`: -18px to +16px), slow breathing zoom (`scale`: 1.03 to 1.08), soft wave luminescence bloom (`0.92` to `1.0`), and pulsing focal starlight flare glint (`0.45` to `0.95`).
+    - Renders the authentic clean deep space navy artwork (`splash_bg.png`, 1080x2346 lossless 32-bit PNG) featuring sweeping luminous electric-blue wave streaks and an upper starlight burst.
+    - Enhanced with spatial gradient debanding and high-frequency dithering to eliminate 8-bit color banding and emulator quantization steps.
+    - Continuous multi-axis hardware-accelerated ambient motion (`useNativeDriver: true`): subtle pan/drift (`translateX`: -12px to +12px, `translateY`: -14px to +14px), slow breathing zoom (`scale`: 1.02 to 1.06), and soft wave luminescence bloom (`0.93` to `1.0`).
     - Uses local binary asset references loaded via Metro bundler (`splashAssets.ts`) ensuring 100% crash-free rendering and zero base64 decoding overhead.
     - Test-safe: loops are gracefully bypassed in test environments (`process.env.NODE_ENV === "test"`).
   - **Logo Badge** (`LogoBadge.tsx`):
     - Signature squircle card (`132dp` x `132dp`, `borderRadius: 38dp`, background `#060E22`, ice-blue luminous border `rgba(147, 197, 253, 0.42)`, glowing shadow `#0084FF`).
     - Authentic stylized `"Ni"` monogram (`splash_monogram.png`) with white stroke and cyan accent dot (`#0084FF`).
-    - Shimmering 4-point diamond star sparkle flare (`splash_sparkle.png`) at top-right corner with gentle breathing pulse and rotation shimmer.
+    - Shimmering 4-point diamond star sparkle flare (`splash_sparkle.png`) with 100% transparent alpha border (no bounding shroud) at top-right corner with gentle breathing pulse and rotation shimmer.
   - **Typography**:
     - Title: `"Neyora"` (`Playfair Display Bold`, `46pt`, `#FFFFFF`, subtle blue text-shadow).
     - Tagline: `"Mange your time ,effortlessly"` (`Inter Regular`, `16pt`, `rgba(255, 255, 255, 0.82)`).

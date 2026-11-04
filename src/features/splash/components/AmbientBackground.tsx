@@ -44,112 +44,93 @@ export const AmbientBackground: React.FC<AmbientBackgroundProps> = ({
   // Multi-axis ambient motion animated values
   const panX = useRef(new Animated.Value(0)).current;
   const panY = useRef(new Animated.Value(0)).current;
-  const scale = useRef(new Animated.Value(1.03)).current;
-  const bloomOpacity = useRef(new Animated.Value(0.94)).current;
-  const flarePulse = useRef(new Animated.Value(0.65)).current;
+  const scale = useRef(new Animated.Value(1.02)).current;
+  const bloomOpacity = useRef(new Animated.Value(0.95)).current;
 
   useEffect(() => {
     if (isTestEnv || !enableMotion) {
       return;
     }
 
-    // 1. Smooth horizontal drift (-14px to +14px)
+    // 1. Smooth horizontal drift (-12px to +12px)
     const panXAnimation = Animated.loop(
       Animated.sequence([
         Animated.timing(panX, {
-          toValue: 14,
-          duration: 3800,
+          toValue: 12,
+          duration: 4000,
           easing: Easing.inOut(Easing.sin),
           useNativeDriver: true,
         }),
         Animated.timing(panX, {
-          toValue: -14,
-          duration: 3800,
+          toValue: -12,
+          duration: 4000,
           easing: Easing.inOut(Easing.sin),
           useNativeDriver: true,
         }),
         Animated.timing(panX, {
           toValue: 0,
-          duration: 2000,
+          duration: 2200,
           easing: Easing.inOut(Easing.sin),
           useNativeDriver: true,
         }),
       ])
     );
 
-    // 2. Smooth vertical float (-18px to +16px)
+    // 2. Smooth vertical float (-14px to +14px)
     const panYAnimation = Animated.loop(
       Animated.sequence([
         Animated.timing(panY, {
-          toValue: -18,
-          duration: 4400,
+          toValue: -14,
+          duration: 4600,
           easing: Easing.inOut(Easing.quad),
           useNativeDriver: true,
         }),
         Animated.timing(panY, {
-          toValue: 16,
-          duration: 4400,
+          toValue: 14,
+          duration: 4600,
           easing: Easing.inOut(Easing.quad),
           useNativeDriver: true,
         }),
         Animated.timing(panY, {
           toValue: 0,
-          duration: 2200,
+          duration: 2400,
           easing: Easing.inOut(Easing.quad),
           useNativeDriver: true,
         }),
       ])
     );
 
-    // 3. Subtle breathing scale (1.03 to 1.08)
+    // 3. Subtle breathing scale (1.02 to 1.06)
     const scaleAnimation = Animated.loop(
       Animated.sequence([
         Animated.timing(scale, {
-          toValue: 1.08,
-          duration: 4200,
+          toValue: 1.06,
+          duration: 4400,
           easing: Easing.inOut(Easing.sin),
           useNativeDriver: true,
         }),
         Animated.timing(scale, {
-          toValue: 1.03,
-          duration: 4200,
+          toValue: 1.02,
+          duration: 4400,
           easing: Easing.inOut(Easing.sin),
           useNativeDriver: true,
         }),
       ])
     );
 
-    // 4. Soft ambient wave luminescence bloom (0.92 to 1.0)
+    // 4. Soft ambient wave luminescence bloom (0.93 to 1.0)
     const bloomAnimation = Animated.loop(
       Animated.sequence([
         Animated.timing(bloomOpacity, {
           toValue: 1.0,
-          duration: 3200,
+          duration: 3400,
           easing: Easing.inOut(Easing.ease),
           useNativeDriver: true,
         }),
         Animated.timing(bloomOpacity, {
-          toValue: 0.92,
-          duration: 3200,
+          toValue: 0.93,
+          duration: 3400,
           easing: Easing.inOut(Easing.ease),
-          useNativeDriver: true,
-        }),
-      ])
-    );
-
-    // 5. Light burst star glint pulse on the upper wave focal point
-    const flareAnimation = Animated.loop(
-      Animated.sequence([
-        Animated.timing(flarePulse, {
-          toValue: 0.95,
-          duration: 2600,
-          easing: Easing.inOut(Easing.sin),
-          useNativeDriver: true,
-        }),
-        Animated.timing(flarePulse, {
-          toValue: 0.45,
-          duration: 2600,
-          easing: Easing.inOut(Easing.sin),
           useNativeDriver: true,
         }),
       ])
@@ -159,16 +140,14 @@ export const AmbientBackground: React.FC<AmbientBackgroundProps> = ({
     panYAnimation.start();
     scaleAnimation.start();
     bloomAnimation.start();
-    flareAnimation.start();
 
     return () => {
       panXAnimation.stop();
       panYAnimation.stop();
       scaleAnimation.stop();
       bloomAnimation.stop();
-      flareAnimation.stop();
     };
-  }, [panX, panY, scale, bloomOpacity, flarePulse, enableMotion]);
+  }, [panX, panY, scale, bloomOpacity, enableMotion]);
 
   return (
     <View style={[styles.container, style]} testID={testID} pointerEvents="none">
@@ -188,17 +167,6 @@ export const AmbientBackground: React.FC<AmbientBackgroundProps> = ({
           resizeMode="cover"
         />
       </Animated.View>
-
-      {/* Subtle pulsing accent flare over the upper wave focal burst */}
-      <Animated.View
-        style={[
-          styles.flareBloom,
-          {
-            opacity: flarePulse,
-            transform: [{ scale: flarePulse }],
-          },
-        ]}
-      />
     </View>
   );
 };
@@ -223,15 +191,6 @@ const styles = StyleSheet.create({
   backgroundImage: {
     width: BG_WIDTH,
     height: BG_HEIGHT,
-  },
-  flareBloom: {
-    position: 'absolute',
-    top: '32%',
-    right: '35%',
-    width: moderateScale(54),
-    height: moderateScale(54),
-    borderRadius: moderateScale(27),
-    backgroundColor: 'rgba(56, 189, 248, 0.28)',
   },
 });
 
