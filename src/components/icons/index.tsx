@@ -516,6 +516,39 @@ export const SettingsIcon: React.FC<IconProps> = ({
   );
 };
 
+export const FilterIcon: React.FC<IconProps> = ({
+  size = 13,
+  color = '#64748B',
+  style,
+}) => {
+  return (
+    <View style={[{ width: size, height: size, alignItems: 'center', justifyContent: 'center' }, style]}>
+      <View
+        style={{
+          width: 0,
+          height: 0,
+          borderLeftWidth: size * 0.42,
+          borderRightWidth: size * 0.42,
+          borderTopWidth: size * 0.5,
+          borderLeftColor: 'transparent',
+          borderRightColor: 'transparent',
+          borderTopColor: color,
+        }}
+      />
+      <View
+        style={{
+          width: size * 0.22,
+          height: size * 0.38,
+          backgroundColor: color,
+          marginTop: -1,
+          borderBottomLeftRadius: 1,
+          borderBottomRightRadius: 1,
+        }}
+      />
+    </View>
+  );
+};
+
 export const EditIcon: React.FC<IconProps> = ({
   size = 18,
   color = '#64748B',

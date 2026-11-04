@@ -1,6 +1,7 @@
 /**
  * Calendar Screen Implementation
  * Operational view for property showings, tenant inspections, and calendar capacity.
+ * Dynamically switches between Month grid and Week timeline format based on segmented switcher.
  * Faithful recreation of the reference design specification.
  */
 
@@ -22,6 +23,7 @@ import {
   CalendarMonthCard,
   CalendarTopBar,
   CalendarViewMode,
+  CalendarWeekView,
   ShowingTourCard,
   TodayCapacityCard,
 } from '../components';
@@ -112,27 +114,45 @@ export const CalendarScreen: React.FC<CalendarScreenProps> = ({ navigation: prop
           onEventPress={() => handleAction('New Event', 'Create new showing or tenant inspection.')}
         />
 
-        {/* 2. Interactive Month Grid Card (October 2026) */}
-        <CalendarMonthCard
-          selectedDay={selectedDay}
-          onSelectDay={(day) => setSelectedDay(day)}
-          onMonthDropdownPress={() => handleAction('Month Selector', 'Select month/year to inspect.')}
-          onPrevMonth={() => handleAction('Previous Month', 'Navigating to September 2026.')}
-          onNextMonth={() => handleAction('Next Month', 'Navigating to November 2026.')}
-          onCalendarPickerPress={() => handleAction('Date Picker', 'Open system date range picker.')}
-          onUpcomingPress={() => handleAction('Upcoming Event', 'Navigating to Unit 402 inspection details.')}
-        />
+        {/* 2. Middle Calendar Section (Toggled by viewMode: Month vs Week) */}
+        {viewMode === 'Week' ? (
+          <CalendarWeekView
+            dateRangeText="Oct 20–26, 2024"
+            weekBadgeText="W43"
+            filterCount={2}
+            selectedDay={selectedDay}
+            onSelectDay={(day) => setSelectedDay(day)}
+            onPrevWeek={() => handleAction('Previous Week', 'Navigating to Oct 13–19, 2024.')}
+            onNextWeek={() => handleAction('Next Week', 'Navigating to Oct 27–Nov 2, 2024.')}
+            onFilterPress={() => handleAction('Filters', '2 active showing filters applied.')}
+            onEventPress={(eventId) => handleAction('Event Selected', `Opening event: ${eventId}`)}
+            onAlertPress={() => handleAction('Elevator Maintenance', 'West Tower Service Lifts Modernization in progress.')}
+          />
+        ) : (
+          <>
+            {/* Interactive Month Grid Card (October 2026) */}
+            <CalendarMonthCard
+              selectedDay={selectedDay}
+              onSelectDay={(day) => setSelectedDay(day)}
+              onMonthDropdownPress={() => handleAction('Month Selector', 'Select month/year to inspect.')}
+              onPrevMonth={() => handleAction('Previous Month', 'Navigating to September 2026.')}
+              onNextMonth={() => handleAction('Next Month', 'Navigating to November 2026.')}
+              onCalendarPickerPress={() => handleAction('Date Picker', 'Open system date range picker.')}
+              onUpcomingPress={() => handleAction('Upcoming Event', 'Navigating to Unit 402 inspection details.')}
+            />
 
-        {/* 3. Today's Capacity Card */}
-        <TodayCapacityCard
-          bookedPercent={82}
-          filledSlots={7}
-          totalSlots={9}
-          leftCount={3}
-          syncTimeText="Synced with Google & Outlook 4 mins ago"
-        />
+            {/* Today's Capacity Card */}
+            <TodayCapacityCard
+              bookedPercent={82}
+              filledSlots={7}
+              totalSlots={9}
+              leftCount={3}
+              syncTimeText="Synced with Google & Outlook 4 mins ago"
+            />
+          </>
+        )}
 
-        {/* 4. Showing Tour Details Sheet (Unit 402 – 2BR Luxury View) */}
+        {/* 3. Showing Tour Details Sheet (Unit 402 – 2BR Luxury View) */}
         <ShowingTourCard
           unitTitle="Unit 402 – 2BR Luxury View"
           propertySubtitle="The Mercer Residences • West End Tower"
@@ -159,7 +179,7 @@ export const CalendarScreen: React.FC<CalendarScreenProps> = ({ navigation: prop
         />
       </ScrollView>
 
-      {/* 5. Persistent Bottom Navigation Bar */}
+      {/* 4. Persistent Bottom Navigation Bar */}
       <BottomNavBar
         activeTab={activeTab}
         variant="calendar"

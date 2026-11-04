@@ -140,18 +140,30 @@ Supports two operational modes:
      - Kicker: `PROPERTY SHOWINGS & TENANT INSPECTIONS`
      - Title: `Calendar` (Playfair Display)
      - Action buttons: `↑ ICS` and `+ EVENT`
-     - View mode switcher: `Month`, `Week`, `Day`, `Agenda`
-  3. `CalendarMonthCard`:
+     - View mode switcher: `Month`, `Week`, `Day`, `Agenda` (dynamically switches between Month grid view and Week timeline format).
+  3. `CalendarMonthCard` (rendered when `viewMode === 'Month'`):
      - October 2026 header with year, month dropdown, `< >` arrow navigation pill, and date picker shortcut.
      - 5-week month grid with exact dot indicators per day.
      - Day 23 active selected circle in `#2563EB`.
      - Bottom strip: `Upcoming: Unit 402 →`.
-  4. `TodayCapacityCard`:
+  4. `TodayCapacityCard` (rendered when `viewMode === 'Month'`):
      - `Today's Capacity` title with `82% BOOKED` badge.
      - 4-segment progress bar: Showings (Blue), Inspections (Orange), Maintenance (Slate), Unfilled (Light gray).
      - Slot counts: `7 of 9 Showing slots filled` and `3 Left`.
      - Synchronization footer: `Synced with Google & Outlook 4 mins ago`.
-  5. `ShowingTourCard`:
+  5. `CalendarWeekView` (rendered when `viewMode === 'Week'`):
+     - Header row with `< >` navigation pill, `Oct 20–26, 2024` date range, `W43` week badge, and `Filters (2)` action button.
+     - 7-day row (`Sun 20` – `Sat 26`) with `Wed 23` highlighted in an active blue badge (`#2563EB`).
+     - `Elevator Modernization (All-Day)` warning banner with `Day 1 of 2` pill.
+     - Time-slotted schedule cards from 09:00 AM to 06:00 PM:
+       - `09:00 AM`: Unit 104 Walkthrough (Sarah Li) with blue left stripe.
+       - `10:00 AM`: Active selected card (`Unit 402 – Showing Tour`) in royal blue with `Selected` tag and `+15m travel buffer`.
+       - HVAC Room Unit 3B with `Done` tag and green stripe.
+       - `01:00 PM`: Virtual Consultation with `Meet` tag and purple stripe.
+       - `03:00 PM`: Vendor Inspection with `Vendor P...` tag and orange stripe.
+       - `04:00 PM`: Key Handover with `Key Hand` tag and teal stripe.
+       - `06:00 PM`: Dashed divider line.
+  6. `ShowingTourCard`:
      - Drag handle pill indicator.
      - `• SHOWING TOUR` dark pill badge + Edit, More options, and Close action buttons.
      - Unit title: `Unit 402 – 2BR Luxury View` + `The Mercer Residences • West End Tower`.
