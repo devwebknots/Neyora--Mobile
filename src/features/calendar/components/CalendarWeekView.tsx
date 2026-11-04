@@ -2,7 +2,7 @@
  * Calendar Week View Component
  * Recreates the detailed weekly schedule view for Oct 20–26, 2024 (W43)
  * with week navigation, active day selector (Wed 23), elevator modernization notice,
- * and time-slotted event cards from 09:00 AM to 06:00 PM.
+ * and time-slotted event cards from 09:00 AM to 06:00 PM with perfectly straight left indicator stripes.
  */
 
 import React, { useState } from 'react';
@@ -191,15 +191,19 @@ export const CalendarWeekView: React.FC<CalendarWeekViewProps> = ({
             onPress={() => handleEventClick('unit104')}
             activeOpacity={0.8}
           >
-            <View style={styles.eventCardHeader}>
-              <Text style={styles.eventCardTitle}>Unit 104 Walkth...</Text>
-              <View style={[styles.eventTag, styles.tagBlue]}>
-                <Text style={[styles.eventTagText, styles.tagTextBlue]}>Walkthrough</Text>
+            {/* Perfectly straight left stripe */}
+            <View style={[styles.cardStripe, { backgroundColor: '#2563EB' }]} />
+            <View style={styles.cardContent}>
+              <View style={styles.eventCardHeader}>
+                <Text style={styles.eventCardTitle}>Unit 104 Walkth...</Text>
+                <View style={[styles.eventTag, styles.tagBlue]}>
+                  <Text style={[styles.eventTagText, styles.tagTextBlue]}>Walkthrough</Text>
+                </View>
               </View>
-            </View>
-            <View style={styles.userRow}>
-              <UserIcon size={moderateScale(11)} color="#64748B" />
-              <Text style={styles.userNameText}>Sarah Li</Text>
+              <View style={styles.userRow}>
+                <UserIcon size={moderateScale(11)} color="#64748B" />
+                <Text style={styles.userNameText}>Sarah Li</Text>
+              </View>
             </View>
           </TouchableOpacity>
         </View>
@@ -245,10 +249,14 @@ export const CalendarWeekView: React.FC<CalendarWeekViewProps> = ({
             onPress={() => handleEventClick('hvac')}
             activeOpacity={0.8}
           >
-            <View style={styles.eventCardHeader}>
-              <Text style={styles.eventCardTitle}>HVAC Ro... Unit 3B</Text>
-              <View style={[styles.eventTag, styles.tagGreen]}>
-                <Text style={[styles.eventTagText, styles.tagTextGreen]}>Done</Text>
+            {/* Perfectly straight green stripe */}
+            <View style={[styles.cardStripe, { backgroundColor: '#10B981' }]} />
+            <View style={styles.cardContent}>
+              <View style={styles.eventCardHeader}>
+                <Text style={styles.eventCardTitle}>HVAC Ro... Unit 3B</Text>
+                <View style={[styles.eventTag, styles.tagGreen]}>
+                  <Text style={[styles.eventTagText, styles.tagTextGreen]}>Done</Text>
+                </View>
               </View>
             </View>
           </TouchableOpacity>
@@ -262,13 +270,17 @@ export const CalendarWeekView: React.FC<CalendarWeekViewProps> = ({
             onPress={() => handleEventClick('virtual')}
             activeOpacity={0.8}
           >
-            <View style={styles.eventCardHeader}>
-              <Text style={styles.eventCardTitle}>Virtual : Consultation</Text>
-              <View style={[styles.eventTag, styles.tagPurple]}>
-                <Text style={[styles.eventTagText, styles.tagTextPurple]}>Meet</Text>
+            {/* Perfectly straight purple stripe */}
+            <View style={[styles.cardStripe, { backgroundColor: '#8B5CF6' }]} />
+            <View style={styles.cardContent}>
+              <View style={styles.eventCardHeader}>
+                <Text style={styles.eventCardTitle}>Virtual : Consultation</Text>
+                <View style={[styles.eventTag, styles.tagPurple]}>
+                  <Text style={[styles.eventTagText, styles.tagTextPurple]}>Meet</Text>
+                </View>
               </View>
+              <Text style={styles.eventCardSubtitle}>Google Meet Link attached</Text>
             </View>
-            <Text style={styles.eventCardSubtitle}>Google Meet Link attached</Text>
           </TouchableOpacity>
         </View>
 
@@ -280,13 +292,17 @@ export const CalendarWeekView: React.FC<CalendarWeekViewProps> = ({
             onPress={() => handleEventClick('vendor')}
             activeOpacity={0.8}
           >
-            <View style={styles.eventCardHeader}>
-              <Text style={styles.eventCardTitle}>Vendor Inspection</Text>
-              <View style={[styles.eventTag, styles.tagOrange]}>
-                <Text style={[styles.eventTagText, styles.tagTextOrange]}>Vendor P...</Text>
+            {/* Perfectly straight orange stripe */}
+            <View style={[styles.cardStripe, { backgroundColor: '#F59E0B' }]} />
+            <View style={styles.cardContent}>
+              <View style={styles.eventCardHeader}>
+                <Text style={styles.eventCardTitle}>Vendor Inspection</Text>
+                <View style={[styles.eventTag, styles.tagOrange]}>
+                  <Text style={[styles.eventTagText, styles.tagTextOrange]}>Vendor P...</Text>
+                </View>
               </View>
+              <Text style={styles.eventCardSubtitle}>Skyline Facilities & Engineering</Text>
             </View>
-            <Text style={styles.eventCardSubtitle}>Skyline Facilities & Engineering</Text>
           </TouchableOpacity>
         </View>
 
@@ -298,13 +314,17 @@ export const CalendarWeekView: React.FC<CalendarWeekViewProps> = ({
             onPress={() => handleEventClick('key')}
             activeOpacity={0.8}
           >
-            <View style={styles.eventCardHeader}>
-              <Text style={styles.eventCardTitle}>Key Handover</Text>
-              <View style={[styles.eventTag, styles.tagTeal]}>
-                <Text style={[styles.eventTagText, styles.tagTextTeal]}>Key Hand</Text>
+            {/* Perfectly straight teal stripe */}
+            <View style={[styles.cardStripe, { backgroundColor: '#0D9488' }]} />
+            <View style={styles.cardContent}>
+              <View style={styles.eventCardHeader}>
+                <Text style={styles.eventCardTitle}>Key Handover</Text>
+                <View style={[styles.eventTag, styles.tagTeal]}>
+                  <Text style={[styles.eventTagText, styles.tagTextTeal]}>Key Hand</Text>
+                </View>
               </View>
+              <Text style={styles.eventCardSubtitle}>Tenant: Liam Vance</Text>
             </View>
-            <Text style={styles.eventCardSubtitle}>Tenant: Liam Vance</Text>
           </TouchableOpacity>
         </View>
 
@@ -507,7 +527,7 @@ const styles = StyleSheet.create({
   },
   timelineRow: {
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    alignItems: 'center',
   },
   timelineRowLast: {
     flexDirection: 'row',
@@ -520,7 +540,6 @@ const styles = StyleSheet.create({
     fontSize: scaleFont(11),
     color: '#94A3B8',
     fontWeight: typography.fontWeight.medium,
-    paddingTop: moderateScale(4),
   },
   timeLabelActive: {
     fontFamily: typography.fontFamily.body.bold,
@@ -532,30 +551,37 @@ const styles = StyleSheet.create({
   },
   eventCard: {
     flex: 1,
-    backgroundColor: colors.white,
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
-    borderLeftWidth: 3.5,
-    borderRadius: moderateScale(10),
-    paddingHorizontal: moderateScale(11),
+    flexDirection: 'row',
+    borderTopRightRadius: moderateScale(10),
+    borderBottomRightRadius: moderateScale(10),
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+    overflow: 'hidden',
+  },
+  cardStripe: {
+    width: moderateScale(3.5),
+    alignSelf: 'stretch',
+  },
+  cardContent: {
+    flex: 1,
+    paddingHorizontal: moderateScale(12),
     paddingVertical: moderateScale(9),
+    justifyContent: 'center',
   },
   eventCardWalkthrough: {
-    borderLeftColor: '#2563EB',
+    backgroundColor: '#F8FAFC',
   },
   eventCardHvac: {
     backgroundColor: '#F0FDF4',
-    borderColor: '#DCFCE7',
-    borderLeftColor: '#10B981',
   },
   eventCardVirtual: {
-    borderLeftColor: '#8B5CF6',
+    backgroundColor: '#FAF5FF',
   },
   eventCardVendor: {
-    borderLeftColor: '#F59E0B',
+    backgroundColor: '#FFFBEB',
   },
   eventCardKey: {
-    borderLeftColor: '#0D9488',
+    backgroundColor: '#F0FDFA',
   },
   eventCardHeader: {
     flexDirection: 'row',
